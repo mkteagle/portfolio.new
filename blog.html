@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body ng-controller="stageController">
+<form>
+    <label>Subject: </label><input type="text" ng-model="subject"> <br/>
+    <label>Date: </label><input type="date" ng-model="postDate"><br/>
+    <label>Message:</label><textarea id="blogMessage" ng-model="message"></textarea><br/>
+</form>
+<div>Subject:</div>
+<div id="title"><span ng-bind="subject"></span></div>
+<div>Author:</div>
+<div id="author"><span ng-bind="author"></span></div>
+<div>Date: </div>
+<div><span ng-bind="postDate"></span></div>
+<div>Body:</div>
+<div><span ng-bind="message"></span></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

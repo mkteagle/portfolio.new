@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngAnimate">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <label>Name: </label><input type="text"> <br/>
+    <label>Is this your full name?</label>
+    <input id="yes" type="radio" name="yesorno" ng-model="content" value="yes">Yes
+    <input id="no" type="radio" name="yesorno" ng-model="content" value="no">No
+    <div class="check-element animate-show" ng-show="content == 'no'">Enter Legal name: <input type="text" ></div>
+    <hr/>
+    <label>DOB: </label><input type="date">
+    <hr/>
+    <label>Gender: </label><select><option>Male</option><option>Female</option></select>
+</head>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js"></script>
+</body>
+</html>
