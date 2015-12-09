@@ -1,3 +1,40 @@
+body {
+    font-family:"HelveticNeue", sans-serif;
+    font-size: 14px;
+    padding: 20px;
+}
+h2 {
+    color: #999;
+    margin-top: 0;
+}
+.click-to-edit {
+    display: inline-block;
+    padding-left: 10px;
+}
+.click-to-date {
+    display: inline-block;
+    padding-left: 10px;
+}
+.click-to-message {
+    display: inline-block;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+.click-to-tag {
+    display: inline-block;
+    padding-left: 10px;
+}
+input {
+    display: initial !important;
+    width: auto !important;
+    margin: 0 5px 0 0 !important;
+}
+#leftCol {
+    border-right: 1px solid black;
+}
+#rightCol {
+    padding-left: 10px;
+}
 #herobg {
     background: #6F6F65;
     position: absolute;
@@ -116,9 +153,28 @@
     width: 500px;
     height: 300px;
 }
+#authorDateLine {
+    text-align: center;
+}
 #title {
-    text-decoration: underline;
-    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    text-align: center;
+
+}
+.odd {
+    color: white;
+    background: grey;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.even {
+    color: white;
+    background: dodgerblue;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
 }
 .animate-show {
     line-height: 20px;
@@ -142,4 +198,28 @@
     padding: 10px;
     border: 1px solid black;
     background: white;
+}
+#main {
+    padding: 10px;
+}
+#leftcolumn {
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+#rightcolumn {
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+#subject {
+    width: 50%;
+}
+#sourceTA {
+    display: block;
+}
+#targetDiv {
+    border: 1px dashed #333333;
+    width: 600px;
+    height: 400px;
 }
