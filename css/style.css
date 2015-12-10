@@ -24,11 +24,6 @@ h2 {
     display: inline-block;
     padding-left: 10px;
 }
-input {
-    display: initial !important;
-    width: auto !important;
-    margin: 0 5px 0 0 !important;
-}
 #leftCol {
     border-right: 1px solid black;
 }
@@ -213,7 +208,7 @@ input {
     padding: 20px;
 }
 #subject {
-    width: 50%;
+    width: 100%;
 }
 #sourceTA {
     display: block;
@@ -222,4 +217,17 @@ input {
     border: 1px dashed #333333;
     width: 600px;
     height: 400px;
+}
+#taStyle {
+    line-height: 20px;
+    margin: 0;
+    padding: 5px;
+    font-size: 1.25em;
+}
+#newContainer {
+    width: 98%;
+    margin: 0;
+    height: auto;
+    font-size: 1.5em;
+    padding: 5px;
 }

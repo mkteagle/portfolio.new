@@ -8,21 +8,25 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+<div class="field">
+    <md-input-container id="newContainer">
+        <strong><input ng-model="subject.title"></strong>
+    </md-input-container>
+</div>
 <div layout="row">
         <div flex id="leftCol">
             <div class="panel">
-                <h1>Edit Post</h1>
-                <div class="field"> <strong>Title: </strong>
-                    <div click-to-edit="subject.title"></div>
-                </div>
                 <div class="field"> <strong>Date: </strong>
                     <div click-to-date="date.post">
                 </div>
                 <div class="field"> <strong>Tag(s): </strong>
                     <div click-to-tag="tags"></div>
                 </div>
-                <div class="field"> <strong>Message:</strong>
-                    <div click-to-message="message.new"></div>
+                    <hr/>
+                <div class="field">
+                    <md-input-container class="md-block md-input-has-value">
+                        <textarea id="taStyle" ng-model="message.new" aria-invalid="false" ng-trim="false"></textarea>
+                    </md-input-container>
                 </div>
             </div>
         </div>
@@ -49,7 +53,7 @@
                 </div>
                 <div id="authorDateLine">
                     <p><span ng-repeat="tag in tags"><span ng-class-even="'even'" ng-class-odd="'odd'"><span ng-bind="tag" class="tag"></span></span></span>
-                    <em> By <a href="{{author.url}}"><span ng-bind="author.name"></span></a></em> On <span ng-bind="date.post | date:'MM/dd/yyyy'"></span></p>
+                    <em> By <a href="{{author.url}}"><span ng-bind="author.name"></span></a></em> On <span ng-bind="date.post | date:'MM/dd/yyyy'"></span></p><span><img src="http://www.gravatar.com/avatar/3f47c28141ef251e1e9caa51830090c1%3Fs=250&d=mm&r=x"></span>
                 </div>
                 <hr />
                 <p><strong>Message:</strong><div marked="message.new"></div></p>
