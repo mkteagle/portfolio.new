@@ -1,14 +1,14 @@
 /**
  * Created by i68066 on 12/7/15.
  */
-var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked'])
+var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked']);
 
-    .controller("LocationFormCtrl", function ($scope) {
+    app.controller("LocationFormCtrl", function ($scope) {
         $scope.date = {
             post: new Date()
         };
         $scope.subject = {
-            title: 'Awesomeness to the 4th Power'
+            title: ''
         };
         $scope.author = {
             name: "Michael Teagle",
@@ -21,9 +21,24 @@ var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked'])
         $scope.file = {
             name: 'None'
         };
-        $scope.tags = ''
-    })
-    .directive("clickToTag", function () {
+        $scope.tags = '';
+        $scope.obj = {};
+        $scope.countOf = function(text) {
+            var s = text ? text.split(/\s+/) : 0; // it splits the text on space/tab/enter
+            return s ? s.length : '';
+        };
+    });
+    app.directive('footer', function () {
+        return {
+            restrict: 'A', //This menas that it will be used as an attribute and NOT as an element. I don't like creating custom HTML elements
+            replace: true,
+            templateUrl: "./js/directives/footer.html",
+            controller: ['$scope', '$filter', function ($scope, $filter) {
+                // Your behaviour goes here :)
+            }]
+        }
+    });
+    app.directive("clickToTag", function () {
         var editorTemplate = '' +
             '<div class="click-to-tag">' +
             '<div ng-hide="view.editorEnabled">' +
@@ -70,8 +85,8 @@ var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked'])
 
             }
         };
-    })
-    .directive("clickToDate", function () {
+    });
+    app.directive("clickToDate", function () {
 
         var editorTemplate = '' +
             '<div class="click-to-date">' +
@@ -82,7 +97,7 @@ var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked'])
             '<div ng-show="view.editorEnabled">' +
             '<md-datepicker ng-model="view.editableValue">' + '</md-datepicker>' +
             '<md-button class="md-primary" ng-click="save()">Save</md-button>' +
-            ' or ' +
+            '   or   ' +
             '<md-button class="md-warn" ng-click="disableEditor()">cancel</md-button>' +
             '</div>' +
             '</div>';
@@ -118,3 +133,8 @@ var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked'])
             }
         };
     });
+app.controller('MyController', function($scope, $mdSidenav) {
+    $scope.openLeftMenu = function() {
+        $mdSidenav('left').toggle();
+    };
+});

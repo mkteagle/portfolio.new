@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <title>Blog</title>
     <link rel="stylesheet" href="https://gitcdn.xyz/repo/angular/bower-material/master/angular-material.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700|MerriWeather+Sans:400,800|Roboto|Source+Code+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<div class="field">
-    <md-input-container id="newContainer">
-        <strong><input ng-model="subject.title"></strong>
-    </md-input-container>
+<div class="page-wrap">
+<div class="header">
+        <strong><input type="text" ng-model="subject.title" id="newContainer" placeholder="Title..."></strong>
+</div>
+<div layout="row" ng-controller="MyController">
+    <md-sidenav md-component-id="left" class="md-sidenav-left">
+        This is the sidebar menu!!!
+    </md-sidenav>
+<!--<md-sidenav md-component-id="right" md-is-locked-open="$mdMedia('min-width: 333px')" class="md-sidenav-right">-->
+<!--</md-sidenav>-->
 </div>
 <div layout="row">
-        <div flex id="leftCol">
+        <div flex class="leftCol">
             <div class="panel">
-                <div class="field"> <strong>Date: </strong>
+                <div class="field"> <strong>Post Date: </strong>
                     <div click-to-date="date.post">
-                </div>
-                <div class="field"> <strong>Tag(s): </strong>
-                    <div click-to-tag="tags"></div>
                 </div>
                     <hr/>
                 <div class="field">
                     <md-input-container class="md-block md-input-has-value">
                         <textarea id="taStyle" ng-model="message.new" aria-invalid="false" ng-trim="false"></textarea>
                     </md-input-container>
+
                 </div>
             </div>
         </div>
@@ -46,32 +50,61 @@
                 </div>
             </div>
         </div>
-        <div flex id="rightCol">
+        <div flex class="rightCol">
             <div class="panel callout">
                 <div id="title">
                      <span ng-bind="subject.title"></span>
                 </div>
                 <div id="authorDateLine">
-                    <p><span ng-repeat="tag in tags"><span ng-class-even="'even'" ng-class-odd="'odd'"><span ng-bind="tag" class="tag"></span></span></span>
+                    <p><span ng-repeat="tag in tags track by $index"><span ng-class-even="'even'" ng-class-odd="'odd'"><span ng-bind="tag" class="tag"></span></span></span>
                     <em> By <a href="{{author.url}}"><span ng-bind="author.name"></span></a></em> On <span ng-bind="date.post | date:'MM/dd/yyyy'"></span></p><span><img src="http://www.gravatar.com/avatar/3f47c28141ef251e1e9caa51830090c1%3Fs=250&d=mm&r=x"></span>
                 </div>
                 <hr />
-                <p><strong>Message:</strong><div marked="message.new"></div></p>
+                <p><div id="messagestyle" marked="message.new"></div></p>
             </div>
         </div>
 </div>
+</div>
+<div class="footer">
+    <div layout="row">
+        <div flex class="leftCol">
+            <div layout="row">
+                <div flex class="leftCol">
+                    <md-content>
+                        <md-button ng-controller="MyController" ng-click="openLeftMenu()">
+                            Open Left Menu
+                        </md-button>
+                    </md-content>
+                </div>
+                <div flex class="rightCol">
+                    <strong>Tag(s): </strong>
+                    <div click-to-tag="tags"></div>
+                </div>
+            </div>
+        </div>
+        <div flex class="rightCol">
+            <div layout="row">
+                <div flex class="leftCol">
+                    <div class="outer">
+                        <div class="centered"><strong>Words: <span ng-bind="countOf(message.new)"></span></strong></div>
+                    </div>
+                </div>
+            <div class="right">
+                <md-button class="md-primary">Submit</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Angular Material Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.js"></script>
-    <!-- Angular Material Javascript using GitCDN to load directly from `bower-material/master` -->
     <script src="https://gitcdn.xyz/repo/angular/bower-material/master/angular-material.js"></script>
     <script src="./node_modules/angular-marked/node_modules/marked/lib/marked.js"></script>
     <script src="./node_modules/angular-marked/dist/angular-marked.js"></script>
-
-
-<script src="js/flow.js"></script>
+    <script src="js/flow.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
