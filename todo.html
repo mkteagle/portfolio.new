@@ -12,7 +12,7 @@
     <strong><input type="text" ng-model="todoList.todoText" id="newContainer" placeholder="Title..." my-enter="todoList.addTodo()"></strong>
 </div>
     <div layout="row" ng-controller="MyController">
-        <md-sidenav md-component-id="left" class="md-sidenav-left">
+        <md-sidenav md-is-locked-open md-component-id="left" class="md-sidenav-left">
             This is the sidebar menu!!!
         </md-sidenav>
 <div>
@@ -48,8 +48,8 @@
             <div layout="row">
                 <div flex class="leftCol">
                     <div class="outer">
-                        <div class="centered"><span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-                            [ <a href="" ng-click="todoList.archive()"> archive</a> ]</div>
+                        <div class="centered"><span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining </span>
+                            [ <a href="" ng-click="todoList.archive()"> archive </a> ]</div>
                     </div>
                 </div>
                 <div class="right">
