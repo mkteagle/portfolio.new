@@ -87,7 +87,16 @@ md-list .md-button {
   padding-right: 40px;
   padding-top: 5px;
 }
-
+#content .contactul.contact {
+    background-color: transparent;
+    border: none;
+    width: 100px;
+    height: 48px;
+    margin: 8px auto 16px 0;
+    position: absolute;
+    top: 10px;
+    right: 40px;
+}
 #content .md-button.contact {
   background-color: transparent;
   border: none;

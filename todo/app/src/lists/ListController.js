@@ -6,11 +6,25 @@
             'listService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
             ListController
         ])
+        .filter('toArchived', function () {
+            var output = [];
+            return function (input)
+            {
+                output = input;
+                angular.forEach(input, function (item) {
+                    if (input.archived) {
+                        output.push(item)
+                    }
+                });
+                return output;
+            };
+
+        })
         .directive ( 'editInPlace', function() {
         return {
             restrict: 'E',
             scope: { value: '=' },
-            template: '<span class="todoName" ng-dblclick="edit()" ng-bind="value"></span><input class="todoField" ng-model="value"></input>',
+            template: '<span class="todoName" ng-click="edit()" ng-bind="value" ng-keypress="$event.which === 13 && finished()"></span><input class="todoField" type="text" ng-model="value"></input>',
             link: function ( $scope, element, attrs ) {
                 // Let's get a reference to the input element, as we'll want to reference it.
                 var inputElement = angular.element( element.children()[1] );
@@ -20,7 +34,10 @@
 
                 // Initially, we're not editing.
                 $scope.editing = false;
-
+                $scope.finished = function () {
+                    $scope.editing = false;
+                    element.removeClass('active');
+                };
                 // ng-dblclick handler to activate edit-in-place
                 $scope.edit = function () {
                     $scope.editing = true;
@@ -51,6 +68,7 @@
         var svgindex = 2;
         var currentShow = 0;
         var svgArr = ['svg-1', 'svg-2', 'svg-3', 'svg-4', 'svg-5'];
+        self.lists = listservice.lists;
 
         self.selected = null;
         self.lists = [];
@@ -93,7 +111,7 @@
         }
 
         self.addList = function () {
-            self.lists.splice(0,0,{index: cIndex, name: self.todoList, avatar: svgArr[svgindex], items: []
+            self.lists.push({index: cIndex, name: self.todoList, avatar: svgArr[svgindex], items: [], archived: false
              });
             self.todoList = '';
             if (svgindex == (svgArr.length-1)) {
@@ -102,19 +120,36 @@
             else {svgindex++;}
             cIndex++;
         };
-        self.addItem = function () {
-            console.log(currentShow + ' , ' + iIndex);
-            self.lists[currentShow].items.splice(0,0,{item: iIndex, text : self.todo , done : false });
-            console.log(self.lists);
+        self.addItem = function (currentShow) {
+            self.lists[currentShow].items.push({item: iIndex, text : self.todo , done : false });
             self.todo = '';
             iIndex++;
         };
         self.deleteItem = function (item) {
-            console.log(currentShow + ',' + item);
-            self.lists[currentShow].items.splice(item, 1);
+            self.lists[currentShow].items.splice(self.lists[currentShow].items.indexOf(item),1);
         };
         self.changeToDo = function (i) {
             currentShow = i;
+        };
+        self.archiveList = function() {
+            var oldTodos = self.lists[currentShow].items;
+            self.lists[currentShow].items = [];
+            angular.forEach(oldTodos, function(todo) {
+                if (!todo.done) self.lists[currentShow].items.push(todo);
+            });
+        };
+        self.deleteList = function () {
+
+        };
+        self.archiveAll = function () {
+            self.lists[currentShow].archived = true;
+            if (currentShow == 0) {
+                self.selectList(null);
+            }
+            if (currentShow == 1) {
+                self.selectList(0);
+            }
+            self.selectList(2);
         };
         /**
          * Show the bottom sheet
@@ -139,10 +174,9 @@
             function ContactPanelController($mdBottomSheet) {
                 this.list = list;
                 this.actions = [
-                    {name: 'Phone', icon: 'phone', icon_url: 'assets/svg/phone.svg'},
-                    {name: 'Twitter', icon: 'twitter', icon_url: 'assets/svg/twitter.svg'},
-                    {name: 'Google+', icon: 'google_plus', icon_url: 'assets/svg/google_plus.svg'},
-                    {name: 'Hangout', icon: 'hangouts', icon_url: 'assets/svg/hangouts.svg'}
+                    {name: 'Delete', icon: 'phone', icon_url: 'assets/svg/phone.svg'},
+                    {name: 'Edit', icon: 'twitter', icon_url: 'assets/svg/twitter.svg'},
+                    {name: 'Archive', icon: 'fa fa-archive', icon_url: 'assets/svg/google_plus.svg'},
                 ];
                 this.submitContact = function (action) {
                     $mdBottomSheet.hide(action);

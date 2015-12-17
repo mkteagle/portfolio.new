@@ -1,25 +1,16 @@
 <md-bottom-sheet class="md-list md-has-header">
 
     <md-subheader>
-        Contact <span class="name">{{ cp.lists.name }}</span>:
+        Edit <span class="name">{{ lists[currentShow].name }}</span>:
     </md-subheader>
 
     <md-list>
-      <md-item ng-repeat="item in cp.actions">
-        <md-button ng-click="cp.submitContact(item)" id="item_{{$index}}">
-            <md-icon md-svg-icon="{{ item.icon_url }}"></md-icon>
-            {{item.name}}
-        </md-button>
-          <ul ng-repeat="item in cp.lists">
-              </li>
-          </ul>
-      </md-item>
+        <md-item ng-repeat="item in cp.actions">
+            <md-button ng-click="cp.submitContact(item)" id="item_{{$index}}">
+                <md-icon md-svg-icon="{{ item.icon_url }}"></md-icon>
+                {{item.name}}
+            </md-button>
+        </md-item>
     </md-list>
-    <ul ng-repeat="item in cp.lists">
-        <li ng-repeat="checkbox in item.items">
-            <input type="checkbox" ng-model="checkbox.done">
-            <label><span>{{checkbox.text}}</span></label>
-        </li>
-    </ul>
 
 </md-bottom-sheet>
