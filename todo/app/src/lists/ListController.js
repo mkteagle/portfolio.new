@@ -107,6 +107,7 @@
          */
         function selectList(list) {
             self.selected = angular.isNumber(list) ? $scope.lists[list] : list;
+            $(".containers").removeClass('hide');
             self.toggleList();
         }
 
@@ -143,13 +144,7 @@
         };
         self.archiveAll = function () {
             self.lists[currentShow].archived = true;
-            if (currentShow == 0) {
-                self.selectList(null);
-            }
-            if (currentShow == 1) {
-                self.selectList(0);
-            }
-            self.selectList(2);
+            $(".containers").addClass('hide');
         };
         /**
          * Show the bottom sheet

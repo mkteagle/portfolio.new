@@ -58,7 +58,7 @@
         </div>
     </md-toolbar>
 
-    <md-content flex id="content">
+    <md-content flex id="content" class="containers">
         <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
         <h2><edit-in-place value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2> <span><md-button class="md-primary" ng-click="ul.archiveList()">Archive Item's</md-button></span>
         <ul>
@@ -84,6 +84,7 @@
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
     <script src="src/lists/Lists.js"></script>
     <script src="src/lists/ListController.js"></script>

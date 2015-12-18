@@ -77,7 +77,6 @@ md-list .md-button {
 
 
 /* Primary content area */
-
 #content {
   overflow: hidden;
 }
@@ -190,4 +189,7 @@ span.name {
 
 .edit-in-place.active input {
     display: inline-block;
+}
+.hide {
+    display: none;
 }
