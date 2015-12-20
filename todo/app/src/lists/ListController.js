@@ -6,19 +6,16 @@
             'listService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
             ListController
         ])
-        .filter('toArchived', function () {
-            var output = [];
-            return function (input)
-            {
-                output = input;
-                angular.forEach(input, function (item) {
-                    if (input.archived) {
-                        output.push(item)
+        .filter('ifArchived', function(){
+            var out = [];
+            return function(input){
+                angular.forEach(input, function(archiveme){
+                    if(archiveme.archived === 'false'){
+                        out.push(archiveme)
                     }
                 });
-                return output;
-            };
-
+                return out;
+            }
         })
         .directive ( 'editInPlace', function() {
         return {
@@ -73,8 +70,6 @@
         self.selected = null;
         self.lists = [];
         self.selectList = selectList;
-        self.toggleList = toggleList;
-        self.showContactOptions = showContactOptions;
 
         // Load all registered lists
 
@@ -88,19 +83,6 @@
         // *********************************
         // Internal methods
         // *********************************
-
-        /**
-         * First hide the bottomsheet IF visible, then
-         * hide or Show the 'left' sideNav area
-         */
-        function toggleList() {
-            var pending = $mdBottomSheet.hide() || $q.when(true);
-
-            pending.then(function () {
-                $mdSidenav('left').toggle();
-            });
-        }
-
         /**
          * Select the current avatars
          * @param menuId
@@ -108,7 +90,6 @@
         function selectList(list) {
             self.selected = angular.isNumber(list) ? $scope.lists[list] : list;
             $(".containers").removeClass('hide');
-            self.toggleList();
         }
 
         self.addList = function () {
@@ -146,39 +127,6 @@
             self.lists[currentShow].archived = true;
             $(".containers").addClass('hide');
         };
-        /**
-         * Show the bottom sheet
-         */
-        function showContactOptions($event) {
-            var list = self.selected;
-
-            return $mdBottomSheet.show({
-                parent: angular.element(document.getElementById('content')),
-                templateUrl: './src/lists/view/contactSheet.html',
-                controller: ['$mdBottomSheet', ContactPanelController],
-                controllerAs: "cp",
-                bindToController: true,
-                targetEvent: $event
-            }).then(function (clickedItem) {
-                clickedItem && $log.debug(clickedItem.name + ' clicked!');
-            });
-
-            /**
-             * Bottom Sheet controller for the Avatar Actions
-             */
-            function ContactPanelController($mdBottomSheet) {
-                this.list = list;
-                this.actions = [
-                    {name: 'Delete', icon: 'phone', icon_url: 'assets/svg/phone.svg'},
-                    {name: 'Edit', icon: 'twitter', icon_url: 'assets/svg/twitter.svg'},
-                    {name: 'Archive', icon: 'fa fa-archive', icon_url: 'assets/svg/google_plus.svg'},
-                ];
-                this.submitContact = function (action) {
-                    $mdBottomSheet.hide(action);
-                };
-            }
-        }
-
     }
 
 })();

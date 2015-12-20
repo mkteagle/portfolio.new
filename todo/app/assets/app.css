@@ -193,3 +193,20 @@ span.name {
 .hide {
     display: none;
 }
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+}
+.page-content {
+    flex: 1;
+}
+.footerlist {
+    display: inline;
+    padding-right: 10px;
+}
+.footerul {
+    list-style-type: none;
+
+}

@@ -1,0 +1,55 @@
+<div flex layout row>
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+
+        <md-toolbar class="md-whiteframe-z1">
+            <div class="blueHeader">
+                <strong><input type="text" class="blueContainer" ng-model="ul.todoList" placeholder="New List..." ng-keydown="$event.which === 13 && ul.addList()"></strong>
+            </div>
+        </md-toolbar>
+
+        <md-list>
+            <md-list-item class="mdlists" ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:true}">
+                <md-button ng-click="ul.selectList(it); ul.changeToDo(it.index)" ng-class="{'selected' : it === ul.selected }">
+                    <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+                    {{it.name}}
+                </md-button>
+            </md-list-item>
+        </md-list>
+
+    </md-sidenav>
+
+
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+            <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show Lists">
+                <md-icon md-svg-icon="menu" ></md-icon>
+            </md-button>
+            <div class="header">
+                <strong><input type="text"  class="newContainer" ng-model="ul.todo" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected.index)"></strong>
+            </div>
+        </md-toolbar>
+
+        <md-content flex id="content" class="containers">
+            <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+            <h2><edit-in-place value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2> <span><md-button class="md-primary" ng-click="ul.archiveList()">Archive Item's</md-button></span>
+            <md-button class="md-primary" md-no-ink aria-label="Delete List">
+                <md-tooltip>Delete {{ ul.selected.name }}</md-tooltip>
+                Delete {{ ul.selected.name }}
+            </md-button>
+            <md-button class="md-primary" md-no-ink ng-click="ul.archiveAll()" aria-label="Archive List">
+                <md-tooltip>Archive {{ ul.selected.name }}</md-tooltip>
+                Archive {{ ul.selected.name }}
+            </md-button>
+            <ul>
+                <li class="checkboxes" ng-repeat="item in ul.selected.items | orderBy:'-'">
+                    <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
+                    <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(item)">x</md-button>
+                </li>
+            </ul>
+
+        </md-content>
+    </div>
+</div>

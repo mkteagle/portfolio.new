@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
@@ -24,68 +24,18 @@
   </head>
 
   <body ng-app="starterApp" layout="row" ng-controller="ListController as ul" ng-cloak >
-
-  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                md-component-id="left"
-                md-is-locked-open="$mdMedia('gt-sm')">
-
-    <md-toolbar class="md-whiteframe-z1">
-        <div class="blueHeader">
-            <strong><input type="text" class="blueContainer" ng-model="ul.todoList" placeholder="New List..." ng-keydown="$event.which === 13 && ul.addList()"></strong>
-        </div>
-    </md-toolbar>
-
-    <md-list>
-      <md-list-item ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:false}">
-          <md-button ng-click="ul.selectList(it); ul.changeToDo(it.index)" ng-class="{'selected' : it === ul.selected }">
-            <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-            {{it.name}}
-          </md-button>
-      </md-list-item>
-    </md-list>
-
-  </md-sidenav>
-
-
-  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-
-    <md-toolbar layout="row" class="md-whiteframe-z1">
-      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show Lists">
-        <md-icon md-svg-icon="menu" ></md-icon>
-      </md-button>
-        <div class="header">
-            <strong><input type="text"  class="newContainer" ng-model="ul.todo" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected.index)"></strong>
-        </div>
-    </md-toolbar>
-
-    <md-content flex id="content" class="containers">
-        <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-        <h2><edit-in-place value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2> <span><md-button class="md-primary" ng-click="ul.archiveList()">Archive Item's</md-button></span>
-        <ul>
-            <li class="checkboxes" ng-repeat="item in ul.selected.items | orderBy:'-'">
-                <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
-                <md-button class="close pull-right" aria-hidden="true" ng-click="ul.deleteItem(item)">x</md-button>
-            </li>
-        </ul>
-        <ul class="contactul">
-            <li><md-button class="primary" md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Delete List">
-                <md-tooltip>Delete {{ ul.selected.name }}</md-tooltip>
-                Delete {{ ul.selected.name }}
-            </md-button></li>
-            <li><md-button class="primary" md-no-ink ng-click="ul.archiveAll()" aria-label="Archive List">
-                <md-tooltip>Archive {{ ul.selected.name }}</md-tooltip>
-                Archive {{ ul.selected.name }}
-            </md-button></li>
-        </ul>
-      </md-content>
-
-  </div>
+      <div class="page-wrapper">
+          <div class="page-content" ui-view></div>
+          <footer ng-include="'./src/templates/footer.html'"></footer>
+      </div>
 
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="src/js/navController.js"></script>
     <script src="src/lists/Lists.js"></script>
     <script src="src/lists/ListController.js"></script>
     <script src="src/lists/ListService.js"></script>

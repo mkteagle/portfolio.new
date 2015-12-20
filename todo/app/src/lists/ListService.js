@@ -1,3 +1,4 @@
+
 (function () {
     'use strict';
 
@@ -20,6 +21,13 @@
                 avatar: 'svg-1',
                 items: [],
                 archived: false
+            },
+            {
+                index: 1,
+                name: 'List 2',
+                avatar: 'svg-1',
+                items: [],
+                archived: true
             }
         ];
 
