@@ -1,5 +1,5 @@
 <!-- Navigation Bar -->
-<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+<nav role="navigation" class="navbar navbar-default navbar-fixed-top" ng-controller="navController as nav">
     <ul class="footerul">
     <li class="footerlist"><md-menu>
         <md-button class="menu" aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
@@ -13,20 +13,12 @@
                 </md-button>
             </md-menu-item>
             <md-menu-item>
-                <md-button ui-sref="home.about" ng-click="{ active: nav.isActive('/about')}">
+                <md-button ui-sref="about" ng-click="{ active: nav.isActive('/about')}">
                     <i class="fa fa-info-circle"></i>
                     About
                 </md-button>
             </md-menu-item>
-            <md-menu-item>
-                <md-button ui-sref="home.archived" ng-click="{ active: nav.isActive('/archived')}">
-                    <i class="fa fa-info-circle"></i>
-                    Archived
-                </md-button>
-            </md-menu-item>
         </md-menu-content>
     </md-menu></li>
-        <li class="footerlist"><md-button ng-click="setGroup(artGroup.artGroupId)">Show Archived Lists</md-button></li>
-        <li class="footerlist"><md-button>Show Archived Items</md-button></li>
     </ul>
 </nav>

@@ -12,16 +12,10 @@
                         templateUrl: "src/templates/home.html",
                         controller: "ListController as ul"
                     })
-                    .state("home.about", {
-                        parent: "home",
+                    .state("about", {
                         url: "/about",
-                        templateUrl: "src/templates/home/about.html"
+                        templateUrl: "src/templates/about.html"
                     })
-                    .state("home.archived", {
-                        parent: "home",
-                        url: "/archived",
-                        templateUrl: "src/templates/home/archived.html"
-                    });
 
                 // if none of the above states are matched, use this as the fallback
                 $urlRouterProvider.otherwise("/home");

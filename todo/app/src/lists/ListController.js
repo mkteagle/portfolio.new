@@ -102,8 +102,9 @@
             else {svgindex++;}
             cIndex++;
         };
-        self.addItem = function (currentShow) {
-            self.lists[currentShow].items.push({item: iIndex, text : self.todo , done : false });
+        self.addItem = function (list) {
+            var listNum = self.lists.indexOf(list);
+            self.lists[listNum].items.push({item: iIndex, text : self.todo , done : false });
             self.todo = '';
             iIndex++;
         };
@@ -113,18 +114,21 @@
         self.changeToDo = function (i) {
             currentShow = i;
         };
-        self.archiveList = function() {
-            var oldTodos = self.lists[currentShow].items;
-            self.lists[currentShow].items = [];
+        self.archiveItem = function(list) {
+            var listnum = self.lists.indexOf(list);
+            var oldTodos = self.lists[listnum].items;
+            self.lists[listnum].items = [];
             angular.forEach(oldTodos, function(todo) {
-                if (!todo.done) self.lists[currentShow].items.push(todo);
+                if (!todo.done) self.lists[listnum].items.push(todo);
             });
         };
-        self.deleteList = function () {
-
+        self.deleteList = function (list) {
+            self.lists.splice(self.lists.indexOf(list),1);
+            $(".containers").addClass('hide');
         };
-        self.archiveAll = function () {
-            self.lists[currentShow].archived = true;
+        self.archiveList = function (list) {
+            var listnum = self.lists.indexOf(list);
+            self.lists[listnum].archived = true;
             $(".containers").addClass('hide');
         };
     }

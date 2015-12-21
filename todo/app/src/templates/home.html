@@ -10,7 +10,7 @@
         </md-toolbar>
 
         <md-list>
-            <md-list-item class="mdlists" ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:true}">
+            <md-list-item class="mdlists" ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:false}">
                 <md-button ng-click="ul.selectList(it); ul.changeToDo(it.index)" ng-class="{'selected' : it === ul.selected }">
                     <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
                     {{it.name}}
@@ -28,18 +28,19 @@
                 <md-icon md-svg-icon="menu" ></md-icon>
             </md-button>
             <div class="header">
-                <strong><input type="text"  class="newContainer" ng-model="ul.todo" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected.index)"></strong>
+                <strong><input type="text"  class="newContainer" ng-model="ul.todo" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected)"></strong>
             </div>
         </md-toolbar>
 
         <md-content flex id="content" class="containers">
             <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-            <h2><edit-in-place value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2> <span><md-button class="md-primary" ng-click="ul.archiveList()">Archive Item's</md-button></span>
-            <md-button class="md-primary" md-no-ink aria-label="Delete List">
+            <h2><edit-in-place value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2>
+            <md-button class="md-primary" ng-click="ul.archiveItem(ul.selected)">Archive Item's</md-button>
+            <md-button class="md-primary" md-no-ink aria-label="Delete List" ng-click="ul.deleteList(ul.selected)">
                 <md-tooltip>Delete {{ ul.selected.name }}</md-tooltip>
                 Delete {{ ul.selected.name }}
             </md-button>
-            <md-button class="md-primary" md-no-ink ng-click="ul.archiveAll()" aria-label="Archive List">
+            <md-button class="md-primary" md-no-ink ng-click="ul.archiveList(ul.selected)" aria-label="Archive List">
                 <md-tooltip>Archive {{ ul.selected.name }}</md-tooltip>
                 Archive {{ ul.selected.name }}
             </md-button>
