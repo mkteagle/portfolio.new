@@ -108,8 +108,9 @@
             self.todo = '';
             iIndex++;
         };
-        self.deleteItem = function (item) {
-            self.lists[currentShow].items.splice(self.lists[currentShow].items.indexOf(item),1);
+        self.deleteItem = function (list, item) {
+            var listnum = self.lists.indexOf(list);
+            self.lists[listnum].items.splice(self.lists[listnum].items.indexOf(item),1);
         };
         self.changeToDo = function (i) {
             currentShow = i;

@@ -47,7 +47,7 @@
             <ul>
                 <li class="checkboxes" ng-repeat="item in ul.selected.items | orderBy:'-'">
                     <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
-                    <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(item)">x</md-button>
+                    <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(ul.selected, item)">x</md-button>
                 </li>
             </ul>
 
