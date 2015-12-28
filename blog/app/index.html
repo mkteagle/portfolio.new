@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Angular Material - Starter App</title>
+    <title>Jen's Travel Blog</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,21 +23,21 @@
 
   </head>
 
-  <body ng-app="myApp" layout="row" ng-controller="UserController as ul" ng-cloak >
+  <body ng-app="myApp" layout="row" ng-controller="BlogController as ul" ng-cloak >
 
   <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
                 md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')">
 
     <md-toolbar class="md-whiteframe-z1">
-      <h1>Users</h1>
+      <h1>Blogs</h1>
     </md-toolbar>
 
     <md-list>
       <md-list-item ng-repeat="it in ul.users">
           <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
             <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-            {{it.name}}
+            {{it.title}}
           </md-button>
       </md-list-item>
     </md-list>
@@ -52,19 +52,46 @@
         <md-icon id="menuitem" md-svg-icon="menu" ></md-icon>
       </md-button>
         <div class="header">
-            <strong><input type="text" ng-model="subject.title" id="newContainer" placeholder="Title..."></strong></div>
+            <strong><input type="text" ng-model="ul.selected.title" id="newContainer" placeholder="Title..."></strong>
+        </div>
     </md-toolbar>
-
     <md-content flex id="content">
-        <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-        <h2>{{ul.selected.name}}</h2>
-        <p>{{ul.selected.content}}</p>
+        <div layout="row">
+            <div flex class="leftCol">
+                <div class="panel">
+                    <div class="field"> <strong>Post Date: </strong>
+                        <div click-to-date="ul.selected.date">
+                        </div>
+                        <hr/>
+                        <div class="field">
+                            <md-input-container class="md-block md-input-has-value">
+                                <textarea id="taStyle" ng-model="ul.selected.content" aria-invalid="false" ng-trim="false"></textarea>
+                            </md-input-container>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div flex class="rightCol">
+                <div class="panel callout">
+                    <div id="title">
+                        <span ng-bind="ul.selected.title"></span>
+                    </div>
+                    <div id="authorDateLine">
+                        <p><span ng-repeat="tag in ul.selected.tags track by $index"><span ng-class-even="'even'" ng-class-odd="'odd'"><span ng-bind="tag" class="tag"></span></span></span>
+                            <em> By <a href="{{ul.selected.url}}"><span ng-bind="ul.selected.name"></span></a></em> On <span ng-bind="ul.selected.date | date:'MM/dd/yyyy'"></span></p><span><md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon></span>
+                    </div>
+                    <hr />
+                    <p><div id="messagestyle" marked="ul.selected.content"></div></p>
+                </div>
+            </div>
+        </div>
         <md-button class="contact" md-no-ink ng-click="ul.showContactOptions($event)" aria-label="Contact User">
           <md-tooltip>Contact {{ ul.selected.name }}</md-tooltip>
           <md-icon md-svg-icon="share"></md-icon>
         </md-button>
       </md-content>
+      <footer ng-include="'./src/templates/footer.html'"></footer>
 
   </div>
 
@@ -74,10 +101,10 @@
     <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
     <script src="./node_modules/angular-marked/node_modules/marked/lib/marked.js"></script>
     <script src="./node_modules/angular-marked/dist/angular-marked.js"></script>
+    <script src="./bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="src/users/Users.js"></script>
     <script src="src/users/UserController.js"></script>
     <script src="src/users/UserService.js"></script>
-    <script src="./js/flow.js"></script>
     <script src="./js/script.js"></script>
 
   </body>

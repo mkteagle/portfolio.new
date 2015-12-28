@@ -1,0 +1,20 @@
+<div layout="row">
+    <div flex class="leftCol">
+        <div layout="row">
+                <strong>Tag(s): </strong>
+                <div click-to-tag="ul.selected.tags"></div>
+            </div>
+        </div>
+    <div flex class="rightCol">
+        <div layout="row">
+            <div flex class="leftCol">
+                <div class="outer">
+                    <div class="centered"><strong>Words: <span ng-bind="ul.countOf(ul.selected.content)"></span></strong></div>
+                </div>
+            </div>
+            <div class="right">
+                <md-button class="md-primary">Submit</md-button>
+            </div>
+        </div>
+    </div>
+</div>

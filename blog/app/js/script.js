@@ -1,7 +1,7 @@
 /**
  * Created by i68066 on 12/7/15.
  */
-var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked', 'users']);
+var app = angular.module('myApp', ['ngMaterial', 'hc.marked', 'users']);
     app.config(function($mdThemingProvider, $mdIconProvider){
 
     $mdIconProvider
@@ -14,8 +14,8 @@ var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked', 'users']);
         .icon("phone"      , "./assets/svg/phone.svg"       , 512);
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('brown')
-        .accentPalette('red');
+        .primaryPalette('pink')
+        .accentPalette('blue');
 
 });
     app.controller("LocationFormCtrl", function ($scope) {
