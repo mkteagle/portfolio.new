@@ -45,14 +45,13 @@ h2 {
 }
 #logo-text {
     position: absolute;
-    z-index: 1000;
+    display: block;
     left: 200px;
     top: 100px;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 3em;
     z-index: 200;
-    transform: rotate(90deg);
 }
 #menu-wrapper {
     left: 300px;
@@ -229,4 +228,5 @@ h2 {
 }
 .backwards {
     -webkit-transform: rotate(90deg);
+    display: block;
 }
