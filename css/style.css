@@ -68,33 +68,32 @@ h2 {
     display: block;
 }
 #menu-wrapper {
-    left: 300px;
-    top: 100px;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
     position: absolute;
-    max-width: 80%;
+    width: 75%;
 }
 .menu-ul {
-    display: inline-block;
-    overflow: hidden;
     list-style-type: none;
 }
 .menu-li {
     float: left;
     text-align: center;
-    display: block;
+    display: inline;
     height: 20px;
     width: 75px;
-    color: lightgray;
+    color: black;
     padding-left: 10px;
     padding-right: 10px;
 }
 .menu-li-large {
     float: left;
     text-align: center;
-    display: block;
+    display: inline;
     height: 20px;
     width: 95px;
-    color: white;
+    color: black;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -102,6 +101,7 @@ h2 {
     cursor: pointer;
     text-align: center;
     background: black;
+    color: lightgray;
     height: 20px;
     width: 95px;
     padding-left: 10px;
@@ -111,6 +111,7 @@ h2 {
     cursor: pointer;
     text-align: center;
     background: black;
+    color: lightgray;
     height: 20px;
     width: 75px;
     padding-left: 10px;
@@ -128,6 +129,10 @@ h2 {
     font-size: 2em;
     text-align: center;
 
+}
+#quote {
+    display: block;
+    top: 25%;
 }
 .odd {
     color: white;
@@ -224,9 +229,6 @@ h2 {
     height: auto;
     border-bottom: 1px solid lightgrey;
 }
-.right {
-    float: right;
-}
 #messagestyle {
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 1.25em;
@@ -241,13 +243,22 @@ h2 {
     height: 48px;
 }
 .right {
+    float: right;
+    width: 200px;
     list-style-type: none;
-    margin-left: auto;
     margin-top: 80px;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
 }
+.menu-section {
+    display: flex;
+    position: relative;
+    z-index: 1000;
+    padding-top: 50px;
+    top: 750px;
+}
 .social-li {
-    display: block;
+    display: inline;
+    padding: 5px;
 }
