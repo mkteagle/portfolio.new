@@ -139,7 +139,6 @@ h2 {
     padding-left: 10px;
 }
 .click-to-tag {
-    display: inline-block;
     padding-left: 10px;
 }
 .leftCol {
@@ -348,7 +347,7 @@ h2 {
     outline: 0;
 }
 .page-wrap {
-    margin-bottom: -48px;
+    margin-bottom: -30px;
 }
 .page-wrap:after {
     content: "";
@@ -359,7 +358,7 @@ h2 {
     width: 100%;
 }
 .footer, .page-wrap:after {
-    height: 48px;
+    height: 30px;
 }
 #footercontainer {
     padding-left: 20px;
@@ -393,3 +392,12 @@ h2 {
 #menuitem {
     color: black;
 }
+.right {
+    color: black;
+    padding-top: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+}
+/*footer {*/
+    /*height: 30px;*/
+/*}*/

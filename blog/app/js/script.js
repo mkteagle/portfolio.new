@@ -42,6 +42,7 @@ var app = angular.module('myApp', ['ngMaterial', 'hc.marked', 'users']);
             var s = text ? text.split(/\s+/) : 0; // it splits the text on space/tab/enter
             return s ? s.length : '';
         };
+
     });
     app.directive('footer', function () {
         return {

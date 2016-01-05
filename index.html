@@ -3,33 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>michael teagle portfolio</title>
 </head>
 <body>
-<div id="nav">
-    <div id="nav-wrapper">
-        <div layout="row">
-            <div id="logo-text">mi</div><span class="backwards">ke</span>
-            <ul class="right">
-                <li class="social-li">twitter</li>
-                <li class="social-li">facebook</li>
-            </ul>
-        </div>
-    </div>
-    <!--<div layout="row">-->
-        <!--<div id="quote">-->
-            <!--<h2>“If you want to know what a man's like, take a good look at how he treats his inferiors, not his-->
-                <!--equals.”-->
-                <!--― <i>J.K. Rowling</i>, Harry Potter and the Goblet of Fire</h2>-->
+<!--<div id="nav">-->
+    <!--<div id="nav-wrapper">-->
+        <!--<div layout="row">-->
+            <!--<div id="logo-text">mi</div><span class="backwards">ke</span>-->
+            <!--<ul class="right">-->
+                <!--<li class="social-li"><i class="fa fa-twitter"></i> twitter</li>-->
+                <!--<li class="social-li"><i class="fa fa-facebook"></i> facebook</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--<div layout="row">-->
+            <!--<div id="quote-outer">-->
+                <!--<div id="quote-inner">-->
+                    <!--<h2>“If you want to know what a man's like, take a good look at how he treats his inferiors, not his-->
+                        <!--equals.” <br/>-->
+                        <!--― <i>J.K. Rowling</i>, Harry Potter and the Goblet of Fire</h2>-->
+                <!--</div>-->
+            <!--</div>-->
         <!--</div>-->
     <!--</div>-->
-</div>
-<div class="menu-section">
+
+<!--</div>-->
+<md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 blues"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-sm')">
+    <div id="sidenav">
+    <md-toolbar>
+        <div layout="row">
+            <div id="logo-text">mi</div><span class="backwards">ke</span>
+        </div>
+    </md-toolbar>
+        <div id="menu-wrapper">
+            <div class="menu-li">
+                ABOUT
+            </div>
+            <hr class="space">
+            <div class="menu-li">
+                BLOG
+            </div>
+            <hr class="space">
+            <div class="menu-li-large">
+                PORTFOLIO
+            </div>
+            <hr class="space">
+            <div class="menu-li-large">
+                RESUME
+            </div>
+            <hr class="space">
+            <div class="menu-li-large">
+                CONTACT
+            </div>
+            <hr class="space">
+        </div>
+    </div>
+</md-sidenav>
+<md-sidenav class="mdsmallnav">
+    <div class="space"><i class="fa fa-twitter fa-lg"></i></div>
+    <div class="space"><i class="fa fa-facebook fa-lg"></i></div>
+    <div class="space"><i class="fa fa-instagram fa-lg"></i></div>
+
+</md-sidenav>
+<div id="bground">
     <div layout="row">
-        <div id="menu-wrapper"><ul class="menu-ul"><li class="menu-li">ABOUT</li><li class="menu-li">BLOG</li><li class="menu-li-large">PORTFOLIO</li><li class="menu-li">RESUME</li><li class="menu-li">CONTACT</li></ul></div>
+        <div id="quote-outer">
+            <div id="quote-inner">
+                <h2>“If you want to know what a man's like, take a good look at how he treats his inferiors, not his
+                    equals.” <br/>
+                    ― <i>J.K. Rowling</i>, Harry Potter and the Goblet of Fire</h2>
+            </div>
+        </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-animate/angular-animate.js"></script>
+<script src="./bower_components/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+<!--<script src="./js/site.js"></script>-->
 </body>
 </html>

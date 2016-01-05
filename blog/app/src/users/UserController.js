@@ -22,7 +22,7 @@
         self.selectUser = selectUser;
         self.toggleList = toggleUsersList;
         self.showContactOptions = showContactOptions;
-
+        self.addBlog = addBlog;
         // Load all registered users
 
         userService
@@ -40,6 +40,17 @@
          * First hide the bottomsheet IF visible, then
          * hide or Show the 'left' sideNav area
          */
+        function addBlog() {
+            self.users.push( {
+                name: 'Michael Teagle',
+                title: 'New Blog',
+                date: new Date(),
+                avatar: 'svg-1',
+                url: '/michael-teagle',
+                content: 'Webtwo ipsum dolor sit amet, eskobo chumby doostang bebo. Bubbli greplin stypi prezi mzinga heroku wakoopa, shopify airbnb dogster dopplr gooru jumo, reddit plickers edmodo stypi zillow etsy.'
+            })
+        }
+
         function toggleUsersList() {
             var pending = $mdBottomSheet.hide() || $q.when(true);
 

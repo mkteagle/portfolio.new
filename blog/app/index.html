@@ -41,7 +41,7 @@
           </md-button>
       </md-list-item>
     </md-list>
-
+    <md-button id="newpost" ng-click="ul.addBlog()">Add New Post</md-button>
   </md-sidenav>
 
 
@@ -54,6 +54,7 @@
         <div class="header">
             <strong><input type="text" ng-model="ul.selected.title" id="newContainer" placeholder="Title..."></strong>
         </div>
+        <div class="right">Settings</div>
     </md-toolbar>
     <md-content flex id="content">
         <div layout="row">
