@@ -34,8 +34,8 @@
     </md-toolbar>
 
     <md-list>
-      <md-list-item ng-repeat="it in ul.users">
-          <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
+      <md-list-item ng-repeat="it in ul.blogs">
+          <md-button ng-click="ul.selectBlog(it)" ng-class="{'selected' : it === ul.selected }">
             <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
             {{it.title}}
           </md-button>
@@ -66,7 +66,7 @@
                         <hr/>
                         <div class="field">
                             <md-input-container class="md-block md-input-has-value">
-                                <textarea id="taStyle" ng-model="ul.selected.content" aria-invalid="false" ng-trim="false"></textarea>
+                                <textarea id="taStyle" ng-model="ul.selected.content" placeholder="Message" aria-invalid="false" ng-trim="false"></textarea>
                             </md-input-container>
 
                         </div>
@@ -103,9 +103,9 @@
     <script src="./node_modules/angular-marked/node_modules/marked/lib/marked.js"></script>
     <script src="./node_modules/angular-marked/dist/angular-marked.js"></script>
     <script src="./bower_components/ng-file-upload/ng-file-upload.js"></script>
-    <script src="src/users/Users.js"></script>
-    <script src="src/users/UserController.js"></script>
-    <script src="src/users/UserService.js"></script>
+    <script src="src/users/Blogs.js"></script>
+    <script src="src/users/BlogController.js"></script>
+    <script src="src/users/BlogService.js"></script>
     <script src="./js/script.js"></script>
 
   </body>

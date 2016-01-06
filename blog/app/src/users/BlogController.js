@@ -1,12 +1,11 @@
 (function () {
 
     angular
-        .module('users')
+        .module('blogs')
         .controller('BlogController', [
-            'userService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+            'blogService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
             BlogController
         ]);
-
     /**
      * Main Controller for the Angular Material Starter App
      * @param $scope
@@ -14,23 +13,33 @@
      * @param avatarsService
      * @constructor
      */
-    function BlogController(userService, $mdSidenav, $mdBottomSheet, $log, $q) {
+    function BlogController(blogService, $mdSidenav, $mdBottomSheet, $log, $q) {
         var self = this;
-
+        var svgArr = ['svg-1', 'svg-2', 'svg-3', 'svg-4', 'svg-5'];
+        var svgindex = 0;
         self.selected = null;
-        self.users = [];
-        self.selectUser = selectUser;
-        self.toggleList = toggleUsersList;
+        self.blogs = blogService.blogs;
+        self.selectBlog = selectBlog;
+        self.toggleList = toggleBlogsList;
         self.showContactOptions = showContactOptions;
         self.addBlog = addBlog;
+        self.refreshBlogs = refreshBlogs;
         // Load all registered users
 
-        userService
-            .loadAllUsers()
-            .then(function (users) {
-                self.users = [].concat(users);
-                self.selected = users[0];
+        blogService
+            .loadAllBlogs()
+            .then(function (blogs) {
+                self.blogs = [].concat(blogs);
+                self.selected = blogs[0];
             });
+        function refreshBlogs() {
+            blogService
+                .loadAllBlogs()
+                .then(function (blogs) {
+                    self.blogs = [].concat(blogs);
+                    self.selected = blogs[0];
+                });
+        }
 
         // *********************************
         // Internal methods
@@ -41,17 +50,12 @@
          * hide or Show the 'left' sideNav area
          */
         function addBlog() {
-            self.users.push( {
-                name: 'Michael Teagle',
-                title: 'New Blog',
-                date: new Date(),
-                avatar: 'svg-1',
-                url: '/michael-teagle',
-                content: 'Webtwo ipsum dolor sit amet, eskobo chumby doostang bebo. Bubbli greplin stypi prezi mzinga heroku wakoopa, shopify airbnb dogster dopplr gooru jumo, reddit plickers edmodo stypi zillow etsy.'
-            })
+            blogService.addBlog(svgArr, svgindex);
+            refreshBlogs();
+            svgindex++;
         }
 
-        function toggleUsersList() {
+        function toggleBlogsList() {
             var pending = $mdBottomSheet.hide() || $q.when(true);
 
             pending.then(function () {
@@ -63,8 +67,8 @@
          * Select the current avatars
          * @param menuId
          */
-        function selectUser(user) {
-            self.selected = angular.isNumber(user) ? $scope.users[user] : user;
+        function selectBlog(blog) {
+            self.selected = angular.isNumber(blog) ? $scope.blogs[blog] : blog;
             self.toggleList();
         }
 
