@@ -35,7 +35,8 @@
         <md-content flex id="content" class="containers">
             <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
             <h2><edit-in-place value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2>
-            <md-button class="md-primary" ng-click="ul.archiveItem(ul.selected)">Archive Item's</md-button>
+            <md-button class="md-primary" md-no-ink aria-label="Archive Items" ng-click="ul.archiveItem(ul.selected)">
+                <md-tooltip>Archive Items</md-tooltip>Archive Items</md-button>
             <md-button class="md-primary" md-no-ink aria-label="Delete List" ng-click="ul.deleteList(ul.selected)">
                 <md-tooltip>Delete {{ ul.selected.name }}</md-tooltip>
                 Delete {{ ul.selected.name }}

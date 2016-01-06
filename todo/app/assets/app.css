@@ -5,7 +5,9 @@ html, body {
   margin: 0px;
   padding: 0px;
 }
-
+#about {
+    padding: 20px;
+}
 /* Toolbar area */
 .blueHeader {
     width: 100%;
@@ -204,7 +206,7 @@ span.name {
 }
 .footerlist {
     display: inline;
-    padding-right: 10px;
+    padding-right: 5px;
 }
 .footerul {
     list-style-type: none;

@@ -16,6 +16,11 @@
                         url: "/about",
                         templateUrl: "src/templates/about.html"
                     })
+                    .state("archived", {
+                        url: "/archived",
+                        templateUrl: "src/templates/archived.html",
+                        controller: "ListController as ul"
+                    })
 
                 // if none of the above states are matched, use this as the fallback
                 $urlRouterProvider.otherwise("/home");
@@ -30,7 +35,7 @@
                     .icon("phone", "./assets/svg/phone.svg", 512);
 
                 $mdThemingProvider.theme('default')
-                    .primaryPalette('light-blue')
+                    .primaryPalette('blue-grey')
                     .accentPalette('deep-orange');
             }]);
 }());
