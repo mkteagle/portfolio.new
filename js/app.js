@@ -63,6 +63,8 @@ app.directive('footer', function () {
     }
 });
 app.directive("clickToTag", function () {
+    var mtDate = '<md-datepicker ng-model="view.editableValue">' + '</md-datepicker>';
+    var mtText = '<input type="text" ng-list = " " ng-trim="false" class="small-12.columns" ng-model="view.editableValue">';
     var editorTemplate = '' +
         '<div class="click-to-tag">' +
         '<div ng-hide="view.editorEnabled">' +
@@ -161,4 +163,10 @@ app.controller('MyController', function($scope, $mdSidenav) {
     $scope.openLeftMenu = function() {
         $mdSidenav('left').toggle();
     };
+});
+$(document).ready(function() {
+    $('.chaffle').chaffle({
+        speed: 50,
+        time: 140
+    });
 });

@@ -3,7 +3,7 @@ body {
     font-size: 14px;
 }
 h2 {
-    color: #999;
+    color: darkslateblue;
     margin-top: 0;
 }
 .click-to-date {
@@ -69,24 +69,9 @@ h2 {
     height: 150px;
 }
 .menu-li {
-    cursor: pointer;
     display: inline;
     font-size: 1.45em;
     color: black;
-    padding: 20px;
-}
-.menu-li-large {
-    cursor: pointer;
-    display: inline;
-    font-size: 1.45em;
-    color: black;
-    padding: 20px;
-}
-.menu-li-large:hover {
-    display: inline;
-    cursor: pointer;
-    background: #18293B;
-    color: lightgray;
     padding: 20px;
 }
 .menu-li:hover {
@@ -95,6 +80,15 @@ h2 {
     background: #18293B;
     color: lightgray;
     padding: 20px;
+}
+.menu-li a {
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
+.menu-li a:hover {
+    text-decoration: none;
+    color: lightgray;
 }
 #blogMessage {
     width: 500px;
@@ -115,6 +109,8 @@ h2 {
     height: 500px;
 }
 #quote-inner {
+    justify-self: center;
+    color: darkslategray;
     text-align: center;
 }
 .odd {
@@ -301,7 +297,8 @@ footer {
 }
 #footers {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 10px;
     width: 75%;
+    font-size: 1.5em;
 }
