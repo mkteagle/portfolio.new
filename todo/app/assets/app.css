@@ -211,3 +211,6 @@ span.name {
 .footerul {
     list-style-type: none;
 }
+footer {
+    background: lightblue;
+}

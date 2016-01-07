@@ -19,7 +19,6 @@
                     .state("archived", {
                         url: "/archived",
                         templateUrl: "src/templates/archived.html",
-                        controller: "ListController as ul"
                     })
 
                 // if none of the above states are matched, use this as the fallback

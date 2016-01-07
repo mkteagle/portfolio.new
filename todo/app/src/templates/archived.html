@@ -1,6 +1,17 @@
-<ul ng-repeat="list in ul.lists">
-    <li class="checkboxes" ng-repeat="item in list.items|orderBy:'-'|filter:{archived:false}">
-        <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
-        <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(list.items, item)">x</md-button>
-    </li>
-</ul>
+<div ng-controller="ListController as ul">
+        <ul>
+        <li ng-repeat="item in lists">
+            {{item.name}} has children:
+            <ul>
+                <li ng-repeat="child in item.items">{{child.name}} has grant-children:
+                </li>
+            </ul>
+        </li>
+        </ul>
+    <ul ng-repeat="list in ul.lists">
+        <li class="checkboxes" ng-repeat="item in list.items|orderBy:'-'|filter:{done:true}">
+            <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
+            <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(ul.list.items, item)">x</md-button>
+        </li>
+    </ul>
+</div>

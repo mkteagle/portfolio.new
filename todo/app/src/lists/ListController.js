@@ -62,7 +62,6 @@
     function ListController(ListService, $mdSidenav, $mdBottomSheet, $log, $q) {
         var self = this;
         var cIndex = 1;
-        var iIndex = 0;
         var svgindex = 2;
         var currentShow = 0;
         var svgArr = ['svg-1', 'svg-2', 'svg-3', 'svg-4', 'svg-5'];
@@ -109,7 +108,6 @@
             self.selected = angular.isNumber(list) ? $scope.lists[list] : list;
             $(".containers").removeClass('hide');
         }
-
         function addList() {
             ListService.addList(self.todoList, cIndex, svgArr, svgindex);
             self.todoList = '';
@@ -121,13 +119,13 @@
             }
             cIndex++;
             refreshList();
+            selectList(ListService.lists.length - 1)
         }
 
         self.addItem = function (list) {
             var listNum = self.lists.indexOf(list);
-            self.lists[listNum].items.push({item: iIndex, text: self.todo, done: false});
+            self.lists[listNum].items.push({text: self.todo, done: false});
             self.todo = '';
-            iIndex++;
         };
         self.deleteItem = function (list, item) {
             var listnum = self.lists.indexOf(list);

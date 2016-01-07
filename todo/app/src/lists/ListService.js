@@ -18,10 +18,15 @@
         var cIndex = 0;
         var lists = [
             {
-                index: 0,
-                name: 'List 1',
+                name: 'ToDo List App',
                 avatar: 'svg-1',
-                items: [],
+                items: [{text: "Add footer", done: false}, {text: "Figure out how to display archived items", done: false}, {text: "Hook up ng-storage", done: false}],
+                archived: false
+            },
+            {
+                name: 'Portfolio Homepage',
+                avatar: 'svg-2',
+                items: [{text: "Add footer", done: false}, {text: "Add jquery animate property, http://demo.tutorialzine.com/2011/09/shuffle-letters-effect-jquery/", done: false}],
                 archived: false
             }
         ];

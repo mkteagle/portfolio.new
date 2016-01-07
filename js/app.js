@@ -1,7 +1,7 @@
 /**
  * Created by i68066 on 12/7/15.
  */
-var app = angular.module('myApp', ['ngMaterial', 'flow', 'hc.marked']);
+var app = angular.module('myApp', ['ngMaterial']);
 
 app.controller("LocationFormCtrl", function ($scope, $mdSidenav) {
     $scope.leftOpen = true;
