@@ -37,7 +37,7 @@ h2 {
     width: 75%;
     height: 700px;
 }
-#logo-text {
+.logo-text {
     position: absolute;
     display: block;
     top: 10px;
@@ -58,6 +58,7 @@ h2 {
     z-index: 201;
     display: block;
 }
+
 #menu-wrapper {
     z-index: 1000;
     width: 50%;
@@ -296,47 +297,74 @@ footer {
 .page-content {
     flex: 1;
 }
-#footer-outer {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10%;
-    height: 300px;
-}
-#footers {
-    display: flex;
-    padding: 10px;
-    width: 100%;
-    flex-direction: column;
-    font-size: 1.5em;
-    color: white;
-}
-#footers-inner {
-    display: flex;
-    padding: 10px;
-    width: 100%;
-    font-size: 1.5em;
-    color: white;
-}
-#emailme {
-    display: flex;
-    padding: 10px;
-    width: 100%;
-    font-size: 1.5em;
-    color: white;
-}
 .alink {
-    display: flex;
-    padding: 10px;
-    width: 200px;
-    height: 180px;
+    padding-left: 10px;
     text-decoration: underline;
+    width: 200px;
     color: white;
     cursor: pointer;
     font-size: 1em;
-
 }
 #bottom-social {
     color: white;
-    width: 100%;
     padding: 10px;
+}
+#bottom-copyright {
+    color: white;
+    width: 100px;
+    padding: 10px;
+}
+#wrapper {
+    width: 100%;
+    max-width: 75%;
+    margin: auto;
+}
+#footer {
+    width: 100%;
+    float:left;
+}
+.footerFloat {
+    padding-top: 20px;
+    padding-right: 100px;
+    width: 30%;
+    float: left;
+    min-width:200px;
+    color: white;
+}
+.footerFloat-middle {
+    padding-top: 50px;
+    padding-right: 100px;
+    float: left;
+    min-width: 200px;
+    color: white;
+}
+.footerFloat-end {
+    padding-top: 20px;
+    padding-right: 100px;
+    float: left;
+    min-width: 200px;
+    color: white;
+}
+.spannedclass {
+    height: 110px;
+}
+.sm-logo {
+    display: block;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    z-index: 200;
+}
+.sm-backwards {
+    -webkit-transform: rotate(90deg);
+    position: absolute;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    z-index: 201;
+    display: block;
+}
+.spacing {
+    padding-top: 50px;
+    height: 130px;
 }
