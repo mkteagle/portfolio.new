@@ -55,53 +55,6 @@
                 }
             };
         })
-    //.directive("clickToDate", function () {
-    //
-    //    var editorTemplate = '' +
-    //        '<div class="click-to-date">' +
-    //        '<div ng-hide="view.editorEnabled">' +
-    //        '{{value}} ' +
-    //        '<md-button class="md-primary" ng-click="enableEditor()">Edit</md-button>' +
-    //        '</div>' +
-    //        '<div ng-show="view.editorEnabled">' +
-    //        '<md-datepicker  ng-model="view.editableValue">' + '</md-datepicker>' +
-    //        '<md-button class="md-primary" ng-click="save()">Save</md-button>' +
-    //        '   or   ' +
-    //        '<md-button class="md-warn" ng-click="disableEditor()">cancel</md-button>' +
-    //        '</div>' +
-    //        '</div>';
-    //    return {
-    //        restrict: "A",
-    //        replace: true,
-    //        template: editorTemplate,
-    //        scope: {
-    //            value: "=clickToDate"
-    //        },
-    //        link: function (scope, element, attrs) {
-    //            scope.view = {
-    //                editableValue: scope.value,
-    //                editorEnabled: false
-    //            };
-    //
-    //            scope.enableEditor = function () {
-    //                scope.view.editorEnabled = true;
-    //                scope.view.editableValue = scope.value;
-    //                setTimeout(function () {
-    //                    element.find('input')[0].focus();
-    //                });
-    //            };
-    //
-    //            scope.disableEditor = function () {
-    //                scope.view.editorEnabled = false;
-    //            };
-    //
-    //            scope.save = function () {
-    //                scope.value = scope.view.editableValue;
-    //                scope.disableEditor();
-    //            };
-    //        }
-    //    };
-    //});
 
 }());
 

@@ -72,21 +72,22 @@ h2 {
     display: inline;
     font-size: 1.45em;
     color: black;
-    padding: 20px;
+    padding: 10px;
 }
 .menu-li:hover {
     display: inline;
     cursor: pointer;
     background: #18293B;
     color: lightgray;
-    padding: 20px;
+    padding: 10px;
 }
 .menu-li a {
-    padding: 20px;
+    padding: 10px;
     text-decoration: none;
     color: black;
 }
 .menu-li a:hover {
+    padding: 10px;
     text-decoration: none;
     color: lightgray;
 }
@@ -106,7 +107,7 @@ h2 {
 #quote-outer {
     display: flex;
     width: 100%;
-    height: 500px;
+    height: 590px;
 }
 #quote-inner {
     justify-self: center;
@@ -231,7 +232,7 @@ h2 {
     justify-content: center;
     width: 100%;
     z-index: 1000;
-    margin-top: 750px;
+    margin-top: 725px;
     height: 50px;
 }
 .social-li {
@@ -295,10 +296,47 @@ footer {
 .page-content {
     flex: 1;
 }
+#footer-outer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    height: 300px;
+}
 #footers {
     display: flex;
-    justify-content: flex-start;
     padding: 10px;
-    width: 75%;
+    width: 100%;
+    flex-direction: column;
     font-size: 1.5em;
+    color: white;
+}
+#footers-inner {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.5em;
+    color: white;
+}
+#emailme {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.5em;
+    color: white;
+}
+.alink {
+    display: flex;
+    padding: 10px;
+    width: 200px;
+    height: 180px;
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+
+}
+#bottom-social {
+    color: white;
+    width: 100%;
+    padding: 10px;
 }
