@@ -2,9 +2,8 @@
     'use strict';
     var client_id = 'f2beafa78b1e469db9a0155caa23f710';
     var user_id = '2156602';
-    angular.module('instagramController', [])
-        .controller('instagramController', instagramController)
-        .factory("InstagramAPI", ['$http', function($http) {
+    var app = angular.module('myApp', []);
+    app.factory("InstagramAPI", ['$http', function($http) {
             return {
                 fetchPhotos: function(callback){
                     var endpoint = "https://api.instagram.com/v1/users/" + user_id + "/media/recent/?";
@@ -17,9 +16,7 @@
                 }
             }
         }]);
-
-    function instagramController($scope, InstagramAPI)
-    {
+    app.controller('instagramController', function($scope, InstagramAPI){
         $scope.layout = 'grid';
         $scope.data = {};
         $scope.pics = [];
@@ -27,5 +24,5 @@
         InstagramAPI.fetchPhotos(function(data){
             $scope.pics = data;
         });
-    }
+    });
 }());

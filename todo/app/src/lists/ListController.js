@@ -124,7 +124,7 @@
 
         self.addItem = function (list) {
             var listNum = self.lists.indexOf(list);
-            self.lists[listNum].items.push({text: self.todo, done: false});
+            self.lists[listNum].items.push({text: self.todo, done: false, archived: false});
             self.todo = '';
         };
         self.deleteItem = function (list, item) {
@@ -137,20 +137,25 @@
         self.archiveItem = function (list) {
             var listnum = self.lists.indexOf(list);
             var oldTodos = self.lists[listnum].items;
-            self.lists[listnum].items = [];
             angular.forEach(oldTodos, function (todo) {
-                if (!todo.done) self.lists[listnum].items.push(todo);
+                if (todo.done) {
+                    todo.archived = true;
+                }
             });
         };
         self.deleteList = function (list) {
             ListService.deleteList(list);
-            $(".containers").addClass('hide');
+            //$(".containers").addClass('hide');
             refreshList();
         };
         self.archiveList = function (list) {
             var listnum = self.lists.indexOf(list);
+            var oldTodos = self.lists[listnum].items;
             self.lists[listnum].archived = true;
-            $(".containers").addClass('hide');
+            angular.forEach(oldTodos, function (todo) {
+                todo.done = true;
+                todo.archived = true;
+            });
         };
     }
 
