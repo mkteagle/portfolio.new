@@ -11,7 +11,7 @@
 
         <md-list>
             <md-list-item class="mdlists" ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:false}">
-                <md-button ng-click="ul.selectList(it); ul.changeToDo(it.index)" ng-class="{'selected' : it === ul.selected }">
+                <md-button ng-click="ul.selectList(it)" ng-class="{'selected' : it === ul.selected }">
                     <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
                     {{it.name}}
                 </md-button>
@@ -46,6 +46,8 @@
                 Archive {{ ul.selected.name }}
             </md-button>
             <ul>
+                <!-- if no items in list, show message -->
+                <li li-nonefound ng-hide="ul.selected.items.length"></li>
                 <li class="checkboxes" ng-repeat="item in ul.selected.items | orderBy:'-' | filter:{archived: false}">
                     <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
                     <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(ul.selected, item)">x</md-button>

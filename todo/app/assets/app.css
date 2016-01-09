@@ -214,3 +214,12 @@ span.name {
 footer {
     background: lightblue;
 }
+.circle {
+    border-radius: 50%;
+    background-image: url("./img/aboutpic.JPG");
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    /* width and height can be anything, as long as they're equal */
+}

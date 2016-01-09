@@ -6,14 +6,14 @@
                 '<div class="click-to-tag">' +
                 '<div ng-hide="view.editorEnabled">' +
                 '{{view.value}} ' +
-                '<md-button class="md-primary" ng-click="enableEditor()">Edit</md-button>' +
+                '<md-button class="md-primary" ng-click="view.enableEditor()">Edit</md-button>' +
                 '</div>' +
                 '<div ng-show="view.editorEnabled">' +
                 '<md-datepicker ng-show="view.date" ng-model="view.editableValue">' + '</md-datepicker>' +
                 '<input type="text" ng-hide="view.date" ng-list = " " ng-trim="false" class="small-12.columns" ng-model="view.editableValue">' +
-                '<md-button class="md-primary" ng-click="save()">Save</md-button>' +
+                '<md-button class="md-primary" ng-click="view.save()">Save</md-button>' +
                 ' or ' +
-                '<md-button class="md-warn" ng-click="disableEditor()">cancel</md-button>' +
+                '<md-button class="md-warn" ng-click="view.disableEditor()">cancel</md-button>' +
                 '</div>' +
                 '</div>';
 
@@ -21,40 +21,36 @@
                 restrict: "A",
                 replace: true,
                 template: editorTemplate,
-                scope: {
+                bindToController: {
                     tag: "=",
                     date: "="
                 },
-                link: function (scope, element, attrs) {
-                    var value = (scope.date ? scope.date : scope.tag);
-                    scope.view = {
-                        value: value,
-                        editableValue: value,
-                        editorEnabled: false,
-                        date: scope.date,
-                        tag: scope.tag
+                controllerAs: 'view',
+                controller: function () {
+                    var view = this;
+                    view.value = view.editableValue = (view.date ? view.date : view.tag);
+                    view.editorEnabled = false;
+
+                    view.enableEditor = function () {
+                        view.editorEnabled = true;
+                        view.editableValue = view.value;
+                        //setTimeout(function () {
+                        //    element.find('input')[0].focus();
+                        //});
                     };
 
-                    scope.enableEditor = function () {
-                        scope.view.editorEnabled = true;
-                        scope.view.editableValue = scope.view.value;
-                        setTimeout(function () {
-                            element.find('input')[0].focus();
-                        });
+                    view.disableEditor = function () {
+                        view.editorEnabled = false;
                     };
 
-                    scope.disableEditor = function () {
-                        scope.view.editorEnabled = false;
-                    };
-
-                    scope.save = function () {
-                        scope.value = scope.view.editableValue;
-                        scope.disableEditor();
+                    view.save = function () {
+                        view.value = view.editableValue;
+                        view.disableEditor();
                     };
 
                 }
             };
-        })
+        });
 
 }());
 

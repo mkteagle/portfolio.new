@@ -25,6 +25,8 @@
         self.lists = lists;
         self.deleteList = deleteList;
         self.addList = addList;
+        self.addItem = addItem;
+        self.deleteItem = deleteItem;
 
         function addList(name, cIndex, svgArr, svgindex) {
             return (self.lists.push({index: cIndex, name: name, avatar: svgArr[svgindex], items: [], archived: false
@@ -33,10 +35,18 @@
         function deleteList(list) {
             return (self.lists.splice(self.lists.indexOf(list), 1));
         }
+        function addItem(index, item) {
+            return (self.lists[index].items.push({text: item, done: false, archived: false}));
+        }
+        function deleteItem(index, item) {
+            return (self.lists[index].items.splice(self.lists[index].items.indexOf(item), 1));
+        }
         // Promise-based API
         return {
             addList: addList,
             deleteList: deleteList,
+            addItem: addItem,
+            deleteItem: deleteItem,
             loadAllLists: function () {
                 // Simulate async nature of real remote calls
                 return $q.when(lists);
