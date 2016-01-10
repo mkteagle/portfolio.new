@@ -483,3 +483,10 @@ ul.grid li img{
     display:block;
     border:none;
 }
+.instathumb {
+    height: 75px;
+    width: 75px;
+}
+#instawrapper {
+    width: 151px;
+}
