@@ -15,6 +15,7 @@
         self.lists = ListService.lists;
         self.addList = addList;
         self.toggleList = toggleList;
+        self.unArchiveItems = unArchiveItems;
 
         self.selected = null;
         self.selectList = selectList;
@@ -51,6 +52,9 @@
          * Select the current avatars
          * @param menuId
          */
+        function unArchiveItems() {
+            ListService.unArchiveItems();
+        }
         function selectList(list) {
             self.selected = angular.isNumber(list) ? $scope.lists[list] : list;
         }
@@ -65,7 +69,7 @@
             }
             cIndex++;
             refreshList();
-            selectList(ListService.lists.length - 1);
+            selectList(indexOf(ListService.lists.length - 1));
         }
 
         self.addItem = function (list) {
@@ -80,11 +84,7 @@
         self.archiveItem = function (list) {
             var listnum = self.lists.indexOf(list);
             var oldTodos = self.lists[listnum].items;
-            angular.forEach(oldTodos, function (todo) {
-                if (todo.done) {
-                    todo.archived = true;
-                }
-            });
+            ListService.archiveItem(oldTodos);
         };
         self.deleteList = function (list) {
             ListService.deleteList(list);
@@ -93,11 +93,7 @@
         self.archiveList = function (list) {
             var listnum = self.lists.indexOf(list);
             var oldTodos = self.lists[listnum].items;
-            self.lists[listnum].archived = true;
-            angular.forEach(oldTodos, function (todo) {
-                todo.done = true;
-                todo.archived = true;
-            });
+            ListService.archiveList(listnum, oldTodos);
         };
     }
 

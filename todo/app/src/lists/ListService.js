@@ -27,6 +27,19 @@
         self.addList = addList;
         self.addItem = addItem;
         self.deleteItem = deleteItem;
+        self.archiveItem = archiveItem;
+        self.archiveList = archiveList;
+        self.unArchiveItems = unArchiveItems;
+
+        function unArchiveItems() {
+            return (angular.forEach(lists, function(item) {
+                angular.forEach(item, function(todo) {
+                    if (!todo.done) {
+                        todo.archived = false;
+                    }
+                })
+            }));
+        }
 
         function addList(name, cIndex, svgArr, svgindex) {
             return (self.lists.push({index: cIndex, name: name, avatar: svgArr[svgindex], items: [], archived: false
@@ -41,12 +54,28 @@
         function deleteItem(index, item) {
             return (self.lists[index].items.splice(self.lists[index].items.indexOf(item), 1));
         }
+        function archiveItem(item) {
+            return (angular.forEach(item, function (todo) {
+                if (todo.done) {
+                    todo.archived = true;
+                }
+            }));
+        }
+        function archiveList(index, item) {
+            return (self.lists[index].archived = true, angular.forEach(item, function (todo) {
+                todo.done = true;
+                todo.archived = true;
+            }));
+        }
         // Promise-based API
         return {
             addList: addList,
             deleteList: deleteList,
             addItem: addItem,
             deleteItem: deleteItem,
+            archiveItem: archiveItem,
+            archiveList: archiveList,
+            unArchiveItems: unArchiveItems,
             loadAllLists: function () {
                 // Simulate async nature of real remote calls
                 return $q.when(lists);

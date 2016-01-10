@@ -12,7 +12,7 @@
         return {
             restrict: 'E',
             scope: {value: '='},
-            template: '<span class="todoName" ng-click="edit()" ng-bind="value" ng-keypress="$event.which === 13 && finished()"></span><input class="todoField" type="text" ng-model="value"></input>',
+            template: '<span class="todoName" ng-click="edit()" ng-bind="value | capitalize: true" ng-keypress="$event.which === 13 && finished()"></span><input class="todoField" type="text" ng-model="value">',
             link: function ($scope, element, attrs) {
                 // Let's get a reference to the input element, as we'll want to reference it.
                 var inputElement = angular.element(element.children()[1]);

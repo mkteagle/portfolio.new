@@ -34,8 +34,8 @@
 
         <md-content flex id="content" class="containers">
             <md-icon ng-hide="ul.selected.archived" md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-            <h2><edit-in-place ng-hide="ul.selected.archived" value="ul.selected.name">{{ul.selected.name}}</edit-in-place></h2>
-            <md-button ng-hide="ul.selected.archived" class="md-primary" md-no-ink aria-label="Archive Items" ng-click="ul.archiveItem(ul.selected)">
+            <h2><edit-in-place ng-hide="ul.selected.archived" value="ul.selected.name">{{ul.selected.name | capitalize:true}}</edit-in-place></h2>
+            <md-button ng-hide="ul.selected.archived || ul.selected.items.length == 0" class="md-primary" md-no-ink aria-label="Archive Items" ng-click="ul.archiveItem(ul.selected)">
                 <md-tooltip>Archive Items</md-tooltip>Archive Items</md-button>
             <md-button ng-hide="ul.selected.archived" class="md-primary" md-no-ink aria-label="Delete List" ng-click="ul.deleteList(ul.selected)">
                 <md-tooltip ng-hide="ul.selected.archived">Delete {{ ul.selected.name }}</md-tooltip>
