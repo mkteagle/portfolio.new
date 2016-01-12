@@ -1,23 +1,50 @@
-<!-- Navigation Bar -->
-<nav role="navigation" class="navbar navbar-default navbar-fixed-top" ng-controller="navController as nav">
-    <ul class="footerul">
-        <li class="footerlist">
-            <md-button ui-sref="home" ng-click="{ active: nav.isActive('/home')}">
-                <i class="fa fa-home"></i>
-                Home
-            </md-button>
-        </li>
-        <li class="footerlist">
-            <md-button ui-sref="about" ng-click="{ active: nav.isActive('/about')}">
-                <i class="fa fa-info-circle"></i>
-                About
-            </md-button>
-        </li>
-        <li class="footerlist">
-            <md-button ui-sref="archived" ng-click="{ active: nav.isActive('/archived')}">
-                <i class="fa fa-archive"></i>
-                Archived
-            </md-button>
-        </li>
-    </ul>
+<nav role="navigation">
+    <div id="footer-outer">
+        <div id="wrapper">
+            <div id="footer">
+                <div class="footerFloat">
+                    <div class="sm-logo">mi</div>
+                    <div class="sm-backwards">ke</div>
+                    <p class="spacing">Bacon ipsum dolor amet frankfurter chicken rump cupim flank sausage, pork drumstick pork chop
+                        filet mignon. Chuck shoulder cupim short ribs tenderloin brisket. Pancetta chuck kevin, pastrami
+                        t-bone kielbasa swine cupim rump meatball.</p>
+                    <div id="bottom-social">
+                        <div class="social-li">
+                            <i class="fa fa-instagram fa-lg"></i>
+                        </div>
+                        <div class="social-li">
+                            <i class="fa fa-facebook fa-lg"></i>
+                        </div>
+                        <div class="social-li">
+                            <i class="fa fa-twitter fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="footerFloat-middle">
+                    <h3>Contact Me</h3>
+                    <div class="alink"><i class="fa fa-envelope-o"></i> mkteagle@gmail.com</div>
+                    <div class="alink"><i class="fa fa-phone"></i> (801)857-7208</div>
+                    <div class="alink"><i class="fa fa-map"></i> Lehi, UT 84043</div>
+
+                    <div class="spannedclass"></div>
+                    <div id="bottom-copyright">Copyright 2016</div>
+                </div>
+
+                <div class="footerFloat-end" ng-controller="navController as nav">
+                    <h3>Instagram</h3>
+                    <div id="instawrapper">
+                        <div id="instafeed"></div>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="menu-li"><a ui-sref="home" ng-click="{ active: nav.isActive('/home')}">HOME</a></li> /
+                            <li class="menu-li"><a ui-sref="about" ng-click="{ active: nav.isActive('/about')}">ABOUT</a></li> /
+                            <li class="menu-li"><a ui-sref="archived" ng-click="{ active: nav.isActive('/archived')}">ARCHIVED</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
