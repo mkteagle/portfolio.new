@@ -7,7 +7,7 @@
             ListController
         ])
 
-    function ListController(ListService, $mdSidenav, $mdBottomSheet, $log, $q) {
+    function ListController(ListService, $mdSidenav, $mdBottomSheet) {
         var self = this;
         var cIndex = 1;
         var svgindex = 2;
@@ -19,29 +19,17 @@
 
         self.selected = null;
         self.selectList = selectList;
+        self.firstList = firstList;
 
-        // Load all registered lists
-        self.refreshList = refreshList;
-
-        ListService
-            .loadAllLists()
-            .then(function (lists) {
-                self.lists = [].concat(lists);
-                self.selected = lists[0];
-            });
-        function refreshList () {
-            ListService
-                .loadAllLists()
-                .then(function (lists) {
-                    self.lists = [].concat(lists);
-                    self.selected = lists[0];
-                });
-        }
         function toggleList() {
             var pending = $mdBottomSheet.hide() || $q.when(true);
             pending.then(function () {
                 $mdSidenav('left').toggle();
             });
+        }
+        function firstList() {
+            self.selected = ListService.lists[0];
+
         }
 
 
@@ -61,6 +49,7 @@
         function addList() {
             ListService.addList(self.todoList, cIndex, svgArr, svgindex);
             self.todoList = '';
+            self.selected = ListService.lists[ListService.lists.length - 1];
             if (svgindex == (svgArr.length - 1)) {
                 svgindex = 0;
             }
@@ -68,8 +57,7 @@
                 svgindex++;
             }
             cIndex++;
-            refreshList();
-            selectList(indexOf(ListService.lists.length - 1));
+
         }
 
         self.addItem = function (list) {
@@ -88,7 +76,7 @@
         };
         self.deleteList = function (list) {
             ListService.deleteList(list);
-            refreshList();
+            self.selected = ListService.lists[ListService.lists.length - 1];
         };
         self.archiveList = function (list) {
             var listnum = self.lists.indexOf(list);

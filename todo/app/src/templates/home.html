@@ -10,7 +10,7 @@
         </md-toolbar>
 
         <md-list>
-            <md-list-item class="mdlists" ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:false}">
+            <md-list-item class="mdlists" ng-init="ul.firstList()" ng-repeat="it in ul.lists|orderBy:'-'|filter:{archived:false}">
                 <md-button ng-click="ul.selectList(it)" ng-class="{'selected' : it === ul.selected }">
                     <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
                     {{it.name}}
@@ -28,28 +28,28 @@
                 <md-icon md-svg-icon="menu" ></md-icon>
             </md-button>
             <div class="header">
-                <strong><input type="text"  class="newContainer" ng-model="ul.todo" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected)"></strong>
+                <strong><input type="text"  class="newContainer" ng-model="ul.todo" ng-disabled="ul.lists.length == 0" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected)"></strong>
             </div>
         </md-toolbar>
 
         <md-content flex id="content" class="containers">
-            <md-icon ng-hide="ul.selected.archived" md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-            <h2><edit-in-place ng-hide="ul.selected.archived" value="ul.selected.name">{{ul.selected.name | capitalize:true}}</edit-in-place></h2>
-            <md-button ng-hide="ul.selected.archived || ul.selected.items.length == 0" class="md-primary" md-no-ink aria-label="Archive Items" ng-click="ul.archiveItem(ul.selected)">
+            <md-icon ng-hide="ul.selected.archived || ul.lists.length == 0" md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+            <h2><edit-in-place ng-hide="ul.selected.archived || ul.lists.length == 0" value="ul.selected.name">{{ul.selected.name | capitalize:true}}</edit-in-place></h2>
+            <md-button ng-hide="ul.selected.archived || ul.selected.items.length == 0 || ul.lists.length == 0" class="md-primary" md-no-ink aria-label="Archive Items" ng-click="ul.archiveItem(ul.selected)">
                 <md-tooltip>Archive Items</md-tooltip>Archive Items</md-button>
-            <md-button ng-hide="ul.selected.archived" class="md-primary" md-no-ink aria-label="Delete List" ng-click="ul.deleteList(ul.selected)">
-                <md-tooltip ng-hide="ul.selected.archived">Delete {{ ul.selected.name }}</md-tooltip>
+            <md-button ng-hide="ul.selected.archived || ul.lists.length == 0" class="md-primary" md-no-ink aria-label="Delete List" ng-click="ul.deleteList(ul.selected)">
+                <md-tooltip ng-hide="ul.selected.archived || ul.lists.length == 0">Delete {{ ul.selected.name }}</md-tooltip>
                 Delete {{ ul.selected.name }}
             </md-button>
-            <md-button ng-hide="ul.selected.archived" class="md-primary" md-no-ink ng-click="ul.archiveList(ul.selected)" aria-label="Archive List">
+            <md-button ng-hide="ul.selected.archived || ul.lists.length == 0" class="md-primary" md-no-ink ng-click="ul.archiveList(ul.selected)" aria-label="Archive List">
                 <md-tooltip>Archive {{ ul.selected.name }}</md-tooltip>
                 Archive {{ ul.selected.name }}
             </md-button>
             <ul>
                 <!-- if no items in list, show message -->
                 <li li-nonefound ng-hide="ul.selected.items.length"></li>
-                <li class="checkboxes" ng-repeat="item in ul.selected.items | orderBy:'-' | filter:{archived: false}">
-                    <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
+                <li class="checkboxes" ng-repeat="item in ul.selected.items | orderBy:'-' | filter:{archived: false}" >
+                    <md-checkbox aria-label="checkbox" md-no-ink ng-model="item.done" class="md-primary" ng-class="{ 'completed-item': ul.selected.item.done }"></md-checkbox><edit-in-place value="item.text"></edit-in-place>
                     <md-button class="close" aria-hidden="true" ng-click="ul.deleteItem(ul.selected, item)">x</md-button>
                 </li>
             </ul>

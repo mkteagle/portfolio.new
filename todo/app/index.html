@@ -25,7 +25,7 @@
 
   <body ng-app="starterApp" layout="row" ng-controller="ListController as ul" ng-cloak >
       <div class="page-wrapper">
-          <div class="page-content" ui-view></div>
+          <div class="page-content" ng-animate="'view'" ui-view></div>
           <footer ng-include="'./src/templates/footer.html'"></footer>
       </div>
 
