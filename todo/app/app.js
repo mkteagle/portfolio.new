@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('starterApp', ['ngMaterial', 'ui.router', 'lists', 'navController', 'listDirectives', 'listFilter'])
+        .module('starterApp', ['ngMaterial', 'ui.router', 'listService', 'navController', 'listDirectives', 'listFilter', 'listController'])
         .config(["$stateProvider", "$urlRouterProvider", "$mdThemingProvider", "$mdIconProvider",
             function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider) {
 

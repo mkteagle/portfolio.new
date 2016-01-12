@@ -1,9 +1,9 @@
 (function () {
 
     angular
-        .module('lists')
+        .module('listController', [])
         .controller('ListController', [
-            'ListService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+            'ListService', '$mdSidenav', '$mdBottomSheet', '$log',
             ListController
         ])
 
@@ -29,7 +29,6 @@
         }
         function firstList() {
             self.selected = ListService.lists[0];
-
         }
 
 

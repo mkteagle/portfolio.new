@@ -2,27 +2,15 @@
 (function () {
     'use strict';
 
-    angular.module('lists')
-        .service('ListService', [ListService]);
+    angular.module('listService', ['ngMaterial', 'navController', 'ngStorage'])
+        .service('ListService', ListService);
 
-    function ListService() {
+    ListService.$inject = ['$localStorage'];
+
+    function ListService($localStorage) {
         var self = this;
         var cIndex = 0;
-        var lists = [
-            {
-                name: 'ToDo List App',
-                avatar: 'svg-1',
-                items: [{text: "Add footer", done: false, archived: false}, {text: "Make it cool", done: true, archived: true}, {text: "Figure out how to display archived items", done: false, archived: false}, {text: "Hook up ng-storage", done: false, archived: false}],
-                archived: false
-            },
-            {
-                name: 'Portfolio Homepage',
-                avatar: 'svg-2',
-                items: [{text: "Add footer", done: false, archived: false}, {text: "Make it coo!!!", done: true, archived: true}, {text: "Add jquery animate property, http://demo.tutorialzine.com/2011/09/shuffle-letters-effect-jquery/", done: false, archived: false}],
-                archived: false
-            }
-        ];
-        self.lists = lists;
+        self.lists = $localStorage.lists ? $localStorage.lists : [];
         self.deleteList = deleteList;
         self.addList = addList;
         self.addItem = addItem;
@@ -30,9 +18,14 @@
         self.archiveItem = archiveItem;
         self.archiveList = archiveList;
         self.unArchiveItems = unArchiveItems;
+        self.storage = storage;
+
+        function storage () {
+            $localStorage.lists = self.lists;
+        }
 
         function unArchiveItems() {
-            angular.forEach(lists, function(item) {
+            angular.forEach(self.lists, function(item) {
                 angular.forEach(item.items, function(todo) {
                     if (todo.done) {
                         todo.archived = false;
@@ -40,20 +33,25 @@
                     }
                 })
             });
+            storage();
         }
 
         function addList(name, cIndex, svgArr, svgindex) {
             self.lists.push({index: cIndex, name: name, avatar: svgArr[svgindex], items: [], archived: false
             });
+            storage();
         }
         function deleteList(list) {
             self.lists.splice(self.lists.indexOf(list), 1);
+            storage();
         }
         function addItem(index, item) {
             self.lists[index].items.push({text: item, done: false, archived: false});
+            storage();
         }
         function deleteItem(index, item) {
             self.lists[index].items.splice(self.lists[index].items.indexOf(item), 1);
+            storage();
         }
         function archiveItem(item) {
             angular.forEach(item, function (todo) {
@@ -61,12 +59,14 @@
                     todo.archived = true;
                 }
             });
+            storage();
         }
         function archiveList(index, item) {
            angular.forEach(item, function (todo) {
                 todo.done = true;
                 todo.archived = true;
             });
+            storage();
         }
     }
 
