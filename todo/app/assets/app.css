@@ -1,9 +1,9 @@
 html, body {
-  font-family: 'Roboto', sans-serif;
-  font-size:14px;
-  height:100%;
-  margin: 0px;
-  padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    height:100%;
+    margin: 0px;
+    padding: 0px;
 }
 #about {
     padding: 20px;
@@ -16,7 +16,7 @@ html, body {
 }
 .blueContainer {
     width: 100%;
-    margin: 0;
+    /*margin: 0;*/
     height: auto;
     font-size: 2em;
     border: 0;
@@ -34,7 +34,7 @@ html, body {
 }
 .newContainer {
     width: 98%;
-    margin: 0;
+    /*margin: 0;*/
     height: auto;
     font-size: 3em;
     border: 0;
@@ -50,43 +50,43 @@ html, body {
 }
 
 .menu {
-  background-color: transparent;
-  border: none;
-  height: 38px;
-  margin: 16px;
-  width: 36px;
+    background-color: transparent;
+    border: none;
+    height: 38px;
+    margin: 16px;
+    width: 36px;
 }
 
 md-toolbar h1 {
-  margin: auto;
+    margin: auto;
 }
 
 /* Sidenav area */
 
 md-list .md-button {
-  color: inherit;
-  font-weight: 500;
-  text-align: left;
-  width: 100%;
+    color: inherit;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
 }
-  md-list .md-button.selected {
+md-list .md-button.selected {
     color: #03a9f4;
-  }
+}
 
-  md-sidenav  md-list {
+md-sidenav  md-list {
     padding: 0px 0px 8px 0px;
-  }
+}
 
 
 /* Primary content area */
 #content {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 #content  {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
 }
 #content .contactul.contact {
     background-color: transparent;
@@ -99,83 +99,83 @@ md-list .md-button {
     right: 40px;
 }
 #content .md-button.contact {
-  background-color: transparent;
-  border: none;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto 16px 0;
-  position: absolute;
-  top: 10px;
-  right: 40px;
+    background-color: transparent;
+    border: none;
+    width: 48px;
+    height: 48px;
+    margin: 8px auto 16px 0;
+    position: absolute;
+    top: 10px;
+    right: 40px;
 }
 
 #content md-icon.avatar {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 #content .md-button.contact > md-icon {
-  fill:black;
-  width:36px;
-  height:36px;
+    fill:black;
+    width:36px;
+    height:36px;
 }
 
 md-button.menuBtn > md-icon {
-  fill:white;
-  width:24px;
-  height:24px;
+    fill:white;
+    width:24px;
+    height:24px;
 }
 
 #content .md-button.contact:active > md-icon {
-  background-color: #dadada;
-  border-radius: 75%;
-  padding:4px;
-  transition: all 100ms ease-out 30ms;
+    background-color: #dadada;
+    border-radius: 75%;
+    padding:4px;
+    transition: all 100ms ease-out 30ms;
 }
 
 #content img {
-  display: block;
-  height: auto;
-  max-width: 500px;
+    display: block;
+    height: auto;
+    max-width: 500px;
 }
 
 /* Utils */
 
 .content-wrapper {
-  position: relative;
+    position: relative;
 }
 
 /* Typography support coming in 0.8.0 */
 
 md-toolbar h1 {
-  font-size: 1.250em;
-  font-weight: 400;
+    font-size: 1.250em;
+    font-weight: 400;
 }
 
 .avatar {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-  zoom:0.70;
-  transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0px;
+    vertical-align: middle;
+    zoom:0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform:scale(0.70);
 }
 
 
 md-bottom-sheet  md-icon {
-  margin-right:20px;
+    margin-right:20px;
 }
 
 span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
+    font-weight: bold;
+    font-size:1.1em;
+    padding-left:5px;
 }
 .edit-in-place span {
     cursor: pointer;
@@ -211,9 +211,6 @@ span.name {
 .footerul {
     list-style-type: none;
 }
-footer {
-    background: lightblue;
-}
 .circle {
     border-radius: 50%;
     background-image: url("./img/aboutpic.JPG");
@@ -221,5 +218,144 @@ footer {
     background-repeat: no-repeat;
     width: 200px;
     height: 200px;
-    /* width and height can be anything, as long as they're equal */
+}
+.footer {
+    width: 100%;
+}
+.footer, .page-wrap:after {
+    height: 48px;
+}
+#footercontainer {
+    padding-left: 20px;
+}
+.footerlist {
+    display: inline;
+    padding-right: 5px;
+}
+.footerul {
+    list-style-type: none;
+}
+#footer {
+    width: 100%;
+    float:left;
+}
+.footerFloat {
+    padding-top: 20px;
+    padding-right: 100px;
+    width: 30%;
+    float: left;
+    min-width:200px;
+    color: white;
+}
+.footerFloat-middle {
+    padding-top: 50px;
+    padding-right: 100px;
+    float: left;
+    min-width: 200px;
+    color: white;
+}
+.footerFloat-end {
+    padding-top: 20px;
+    padding-right: 100px;
+    float: left;
+    min-width: 200px;
+    color: white;
+}
+.spannedclass {
+    height: 90px;
+}
+.sm-logo {
+    display: block;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    z-index: 200;
+}
+.sm-backwards {
+    -webkit-transform: rotate(90deg);
+    position: absolute;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    z-index: 201;
+    display: block;
+}
+.spacing {
+    padding-top: 50px;
+    height: 130px;
+}
+.instathumb {
+    height: 75px;
+    width: 75px;
+}
+#instawrapper {
+    width: 151px;
+}
+#wrapper {
+    width: 100%;
+    max-width: 75%;
+    margin: auto;
+}
+footer {
+    position: absolute;
+    height: 300px;
+    background: #18293B;
+}
+.social-li {
+    display: inline;
+    padding: 5px;
+    cursor: pointer;
+}
+.social-li:hover {
+    display: inline;
+    padding: 5px;
+}
+.md-button {
+    padding: 0;
+}
+.menu-li {
+    display: inline;
+    cursor: pointer;
+    color: white;
+}
+.menu-li a {
+    text-decoration: none;
+    color: white;
+}
+.topbar {
+    background: white;
+    position: absolute;
+    display: inline;
+    height: 100px;
+}
+.logo-text {
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: 5%;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    z-index: 200;
+}
+.backwards {
+    -webkit-transform: rotate(90deg);
+    position: absolute;
+    top: 35px;
+    left: 5%;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    z-index: 201;
+    display: block;
+}
+.positionit {
+    position: relative;
+}
+.completed-item { text-decoration: line-through; }
+.archived {
+    padding: 10px;
+}
+.paddingit {
+    padding-left: 10px;
 }
