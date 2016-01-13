@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('navController', [])
+    angular.module('navController', ["ngAnimate"])
         .controller('navController', navController);
 
     navController.$inject = ["$location"];

@@ -27,8 +27,20 @@
             <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show Lists">
                 <md-icon md-svg-icon="menu" ></md-icon>
             </md-button>
-            <div class="header">
+            <div class="header" ng-controller="navController as nav">
+                <div layout="row">
                 <strong><input type="text"  class="newContainer" ng-model="ul.todo" ng-disabled="ul.lists.length == 0" placeholder="New Todo..." ng-keydown="$event.which === 13 && ul.addItem(ul.selected)"></strong>
+                <!--<span flex></span>-->
+                    <div class="settings">
+                    <md-button class="md-primary blackify dropdown" ng-click="myDropdownIsActive=!myDropdownIsActive" ng-class="{active:myDropdownIsActive}">
+                        <i class="fa fa-chevron-circle-down fa-lg blackify"></i>
+                        <ul class="dropdown-menu">
+                            <li><md-button class="blackify" ui-sref="home" ng-click="{ active: nav.isActive('/home')}">Home</md-button></li>
+                            <li><md-button class="blackify" ui-sref="about" ng-click="{ active: nav.isActive('/about')}">About</md-button></li>
+                            <li><md-button class="blackify" ui-sref="archived" ng-click="{ active: nav.isActive('/archived')}">Archived</md-button></li>
+                        </ul>
+                    </md-button></div>
+                </div>
             </div>
         </md-toolbar>
         <md-content flex id="content" class="containers">

@@ -1,10 +1,40 @@
 (function () {
     'use strict';
+    var translations = {
+        Archived: 'Archive',
+        Items: 'Archive Items',
+        Delete: 'Delete',
+        Contact: 'Contact Me'
+    };
+    var translationsDE = {
+        Archived: 'Archiv',
+        Items: 'Archiv Artikel',
+        Delete: 'Löschen',
+        Contact: 'Kontaktiere mich'
+    };
+    var translationsFR = {
+        Archived: 'Les Archives',
+        Items: 'Articles',
+        Delete: 'Effacer',
+        Contact: 'Le Contact Moi'
+    };
+    var translationsES = {
+        Archived: 'Archive',
+        Items: 'Items',
+        Delete: 'Delete',
+        Contact: 'Contact',
+        Me: ''
+    };
     angular
-        .module('starterApp', ['ngMaterial', 'ui.router', 'listService', 'navController', 'listDirectives', 'listFilter', 'listController'])
-        .config(["$stateProvider", "$urlRouterProvider", "$mdThemingProvider", "$mdIconProvider",
-            function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider) {
-
+        .module('starterApp', ['ngMaterial', 'ui.router', 'listService', 'navController', 'listDirectives', 'listFilter', 'listController', 'ngAnimate', 'pascalprecht.translate'])
+        .config(["$stateProvider", "$urlRouterProvider", "$mdThemingProvider", "$mdIconProvider", '$translateProvider',
+            function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $translateProvider) {
+                $translateProvider
+                    .translations('en', translations)
+                    .translations('de', translationsDE)
+                    .translations('de', translationsFR)
+                    .translations('de', translationsES)
+                    .preferredLanguage('en');
                 // define all app states (pages)
                 $stateProvider
                     .state("home", {

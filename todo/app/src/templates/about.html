@@ -1,5 +1,19 @@
-<div id="about">
-    <h2>About My App</h2>
+<div class="header" ng-controller="navController as nav">
+    <div layout="row">
+        <h2>About My App</h2>
+        <span flex></span>
+        <div class="settings">
+            <md-button class="md-primary blackify dropdown" ng-click="myDropdownIsActive=!myDropdownIsActive" ng-class="{active:myDropdownIsActive}">
+                <i class="fa fa-chevron-circle-down fa-lg blackify"></i>
+                <ul class="dropdown-menu">
+                    <li><md-button class="blackify" ui-sref="home" ng-click="{ active: nav.isActive('/home')}">Home</md-button></li>
+                    <li><md-button class="blackify" ui-sref="about" ng-click="{ active: nav.isActive('/about')}">About</md-button></li>
+                    <li><md-button class="blackify" ui-sref="archived" ng-click="{ active: nav.isActive('/archived')}">Archived</md-button></li>
+                </ul>
+            </md-button></div>
+    </div>
+</div>
+<div id="about" class="anim-slide-left">
     <h4>by Michael Teagle</h4>
     <div class="circle"></div>
 </div>
