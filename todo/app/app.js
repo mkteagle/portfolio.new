@@ -1,29 +1,84 @@
 (function () {
     'use strict';
     var translations = {
-        Archived: 'Archive',
+        Archived: 'Archive List',
         Items: 'Archive Items',
-        Delete: 'Delete',
-        Contact: 'Contact Me'
+        Delete: 'Delete List',
+        Contact: 'Contact Me',
+        Copyright: 'Copyright',
+        ToDo: 'New ToDo...',
+        List: 'New List...',
+        AI: 'Archived Items',
+        About: 'About My App',
+        EnglishBu: 'English',
+        FrenchBu: 'français',
+        GermanBu: 'Deutsche',
+        SpanishBu: 'Español',
+        NoItems: 'No Items in this List',
+        Unarchive: 'Unarchive Item(s)',
+        HomeBu: 'Home',
+        AboutBu: 'About',
+        ArchiveBu: 'Archived'
     };
     var translationsDE = {
-        Archived: 'Archiv',
+        Archived: 'archivieren Liste',
         Items: 'Archiv Artikel',
-        Delete: 'Löschen',
-        Contact: 'Kontaktiere mich'
+        Delete: 'Löschen Liste',
+        Contact: 'Kontaktiere mich',
+        Copyright: 'Copyright',
+        ToDo: 'Neu ToDo...',
+        List: 'neue Liste...',
+        AI: 'Archivierte Artikel',
+        About: 'Über Meine App',
+        EnglishBu: 'English',
+        FrenchBu: 'français',
+        GermanBu: 'Deutsche',
+        SpanishBu: 'Español',
+        NoItems: 'Keine Einträge in dieser Liste',
+        Unarchive: 'Dearchivieren(r) Artikel',
+        HomeBu: 'Zuhause',
+        AboutBu: 'Etwa',
+        ArchiveBu: 'archiviert'
     };
     var translationsFR = {
-        Archived: 'Les Archives',
-        Items: 'Articles',
-        Delete: 'Effacer',
-        Contact: 'Le Contact Moi'
+        Archived: 'Les Archives liste',
+        Items: 'Les Archives Articles',
+        Delete: 'Effacer liste',
+        Contact: 'Le Contact Moi',
+        Copyright: 'droits dauteur',
+        ToDo: 'Nouveau ToDo...',
+        List: 'nouvelle liste...',
+        AI: 'Articles archivés',
+        About: 'A propos de My App',
+        EnglishBu: 'English',
+        FrenchBu: 'français',
+        GermanBu: 'Deutsche',
+        SpanishBu: 'Español',
+        NoItems: "Pas d'éléments dans cette liste",
+        Unarchive: 'Désarchiver article(s)',
+        HomeBu: 'Accueil',
+        AboutBu: 'sur',
+        ArchiveBu: 'archivé'
     };
     var translationsES = {
-        Archived: 'Archive',
-        Items: 'Items',
-        Delete: 'Delete',
-        Contact: 'Contact',
-        Me: ''
+        Archived: 'Archivo lista',
+        Items: 'Archivo de Artículos',
+        Delete: 'Borrar lista',
+        Contact: 'Contáctame',
+        Copyright: 'Derechos de autor',
+        ToDo: 'Nueva ToDo...',
+        List: 'Nueva lista...',
+        AI: 'Contenido archivado',
+        About: 'Acerca de Mi App',
+        EnglishBu: 'English',
+        FrenchBu: 'français',
+        GermanBu: 'Deutsche',
+        SpanishBu: 'Español',
+        NoItems: 'No hay artículos en esta lista',
+        Unarchive: 'Artículo Desarchivar(s)',
+        HomeBu: 'Casa',
+        AboutBu: 'Acerca de',
+        ArchiveBu: 'archivado'
     };
     angular
         .module('starterApp', ['ngMaterial', 'ui.router', 'listService', 'navController', 'listDirectives', 'listFilter', 'listController', 'ngAnimate', 'pascalprecht.translate'])
@@ -32,9 +87,11 @@
                 $translateProvider
                     .translations('en', translations)
                     .translations('de', translationsDE)
-                    .translations('de', translationsFR)
-                    .translations('de', translationsES)
+                    .translations('fr', translationsFR)
+                    .translations('es', translationsES)
                     .preferredLanguage('en');
+                $translateProvider.useSanitizeValueStrategy(null);
+                //$translateProvider.useLocalStorage();
                 // define all app states (pages)
                 $stateProvider
                     .state("home", {
