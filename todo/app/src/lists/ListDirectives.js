@@ -4,7 +4,8 @@
     angular.module('listDirectives', [])
         .directive('editInPlace', editInPlace)
         .directive('liNonefound', liNonefound) // td-nonefound
-
+        .directive('liItem', liItem)
+        .controller('itemController, itemController');
 
     function editInPlace() {
         return {
@@ -41,6 +42,12 @@
             restrict: 'A',
             replace: true,
             template: '<i>{{ "NoItems" | translate }}</i>'
+        };
+    }
+    function liItem() {
+        return {
+            restrict: 'A',
+            templateUrl: '../app/src/templates/item.html'
         };
     }
 }());

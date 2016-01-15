@@ -9,7 +9,6 @@
 
     function ListService($localStorage) {
         var self = this;
-        var cIndex = 0;
         self.lists = $localStorage.lists ? $localStorage.lists : [];
         self.deleteList = deleteList;
         self.addList = addList;
@@ -61,7 +60,7 @@
             });
             storage();
         }
-        function archiveList(index, item) {
+        function archiveList(item) {
            angular.forEach(item, function (todo) {
                 todo.done = true;
                 todo.archived = true;

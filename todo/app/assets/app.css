@@ -359,10 +359,11 @@ footer {
     padding-left: 10px;
 }
 .settings {
+    position: relative;
     margin-top: 15px;
     float: right;
     padding-right: 30px;
-    width: 50%;
+    width: 10%;
     color: black;
 }
 .md-button.dropdown {
@@ -447,8 +448,9 @@ footer {
     /*position: relative;*/
 }
 .home-settings {
+    position: relative;
     color: black;
-    width: 58%;
+    width: 15%;
     margin-top: 15px;
     float: right;
     padding-right: 30px;

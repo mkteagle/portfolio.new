@@ -1,6 +1,6 @@
 var client_id = 'f2beafa78b1e469db9a0155caa23f710';
 var user_id = '2156602';
-var app = angular.module('myApp', ['ngMaterial']);
+var app = angular.module('myApp', ['ngMaterial', 'blogDirective']);
 app.factory("InstagramAPI", ['$http', function($http) {
     return {
         fetchPhotos: function(callback){
