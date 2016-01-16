@@ -1,6 +1,6 @@
 var client_id = 'f2beafa78b1e469db9a0155caa23f710';
 var user_id = '2156602';
-var app = angular.module('myApp', ['ngMaterial', 'blogDirective']);
+var app = angular.module('myApp', ['ngMaterial', 'blogDirective', 'ngAnimate']);
 app.factory("InstagramAPI", ['$http', function($http) {
     return {
         fetchPhotos: function(callback){
@@ -14,74 +14,72 @@ app.factory("InstagramAPI", ['$http', function($http) {
         }
     }
 }]);
-app.controller('instagramController', function($scope, InstagramAPI){
-    $scope.layout = 'grid';
-    $scope.data = {};
-    $scope.pics = [];
+app.controller('MainCtrl', function ($scope) {
+        $scope.slides = [
+            {image: '../portfolio.new/img/mtn-background.jpg', description: 'Image 00'},
+            {image: '../portfolio.new/img/mtn-background2.jpg', description: 'Image 01'},
+            {image: '../portfolio.new/img/mtn-bg.png', description: 'Image 02'},
+            {image: '../portfolio.new/img/mtn-background3.jpg', description: 'Image 03'},
+            {image: '../portfolio.new/images/img04.jpg', description: 'Image 04'}
+        ];
 
-    InstagramAPI.fetchPhotos(function(data){
-        $scope.pics = data;
+        $scope.direction = 'left';
+        $scope.currentIndex = 0;
+
+        $scope.setCurrentSlideIndex = function (index) {
+            $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
+            $scope.currentIndex = index;
+        };
+
+        $scope.isCurrentSlideIndex = function (index) {
+            return $scope.currentIndex === index;
+        };
+
+        $scope.prevSlide = function () {
+            $scope.direction = 'left';
+            $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+        };
+
+        $scope.nextSlide = function () {
+            $scope.direction = 'right';
+            $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
+        };
+    })
+    .animation('.slide-animation', function () {
+        return {
+            beforeAddClass: function (element, className, done) {
+                var scope = element.scope();
+
+                if (className == 'ng-hide') {
+                    var finishPoint = element.parent().width();
+                    if(scope.direction !== 'right') {
+                        finishPoint = -finishPoint;
+                    }
+                    TweenMax.to(element, 0.5, {left: finishPoint, onComplete: done });
+                }
+                else {
+                    done();
+                }
+            },
+            removeClass: function (element, className, done) {
+                var scope = element.scope();
+
+                if (className == 'ng-hide') {
+                    element.removeClass('ng-hide');
+
+                    var startPoint = element.parent().width();
+                    if(scope.direction === 'right') {
+                        startPoint = -startPoint;
+                    }
+
+                    TweenMax.fromTo(element, 0.5, { left: startPoint }, {left: 0, onComplete: done });
+                }
+                else {
+                    done();
+                }
+            }
+        };
     });
-});
-app.controller("LocationFormCtrl", function ($scope, $mdSidenav) {
-    $scope.leftOpen = true;
-    $scope.date = {
-        post: new Date()
-    };
-    $scope.subject = {
-        title: ''
-    };
-    $scope.author = {
-        name: "Michael Teagle",
-        url: './michael-teagle.html',
-        src: 'http://www.gravatar.com/avatar/3f47c28141ef251e1e9caa51830090c1?s=250&d=mm&r=x'
-    };
-    $scope.message = {
-        new: 'Bacon ipsum dolor amet ham hock meatball turducken, doner swine shankle kielbasa. Pig shankle beef ribs jerky sirloin. Hamburger bresaola boudin, tail shankle pork biltong meatloaf swine rump kevin flank porchetta t-bone. Corned beef brisket turducken, sirloin pork chop meatball tongue jerky tenderloin ham hock. Spare ribs short loin alcatra leberkas picanha shank bresaola ham sausage corned beef pancetta landjaeger. Venison jerky corned beef pork chop swine capicola doner biltong. Shoulder boudin sausage filet mignon shank alcatra.Andouille filet mignon turducken biltong, fatback t-bone short ribs. Turducken shankle chuck drumstick. Cow tenderloin swine, prosciutto meatball pancetta jerky beef flank. Beef ham hock bacon t-bone short ribs. Drumstick biltong hamburger meatloaf pork pancetta. Tail drumstick pork loin hamburger beef.Ribeye ball tip bacon cow boudin shank. Porchetta cupim tri-tip short ribs, tongue jowl frankfurter pork belly chuck shoulder tenderloin corned beef beef ribs short loin. Capicola bresaola kielbasa jerky meatloaf. Prosciutto alcatra jowl, ball tip flank t-bone fatback kevin spare ribs sausage pork loin sirloin beef. Flank beef ribs swine bresaola pork.T-bone strip steak venison ham hock, hamburger pancetta leberkas tail biltong chicken. Pastrami pork belly t-bone jowl brisket, tri-tip sirloin shankle corned beef tongue. Ham hock porchetta prosciutto jowl spare ribs ham. Beef ribs pig tri-tip chicken pancetta. Ball tip shank doner ribeye chuck andouille.Pork chop tail shoulder meatloaf pork loin beef. Fatback alcatra tail brisket cupim pork belly kielbasa corned beef shank. Turkey venison meatloaf kielbasa pork loin pork chop pork rump sirloin andouille salami ham hock pastrami. Tongue shankle rump ball tip, chicken t-bone pork chop pork loin jowl landjaeger beef ribs drumstick short ribs turducken. Beef ribs fatback turkey, filet mignon chuck pig t-bone ham hock short loin flank alcatra. Tri-tip filet mignon beef, biltong porchetta swine ham t-bone ball tip jowl brisket chuck doner andouille.Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!'
-    };
-    $scope.file = {
-        name: 'None'
-    };
-    $scope.tags = '';
-    $scope.obj = {};
-    $scope.countOf = function(text) {
-        var s = text ? text.split(/\s+/) : 0; // it splits the text on space/tab/enter
-        return s ? s.length : '';
-    };
-        function buildToggler(navID) {
-            var debounceFn =  $mdUtil.debounce(function(){
-                $mdSidenav(navID)
-                    .toggle()
-                    .then(function () {
-                        $log.debug("toggle " + navID + " is done");
-                    });
-            },300);
-
-            return debounceFn;
-        }
-
-    });
-app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-
-});
-app.controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-        $mdSidenav('right').close()
-            .then(function () {
-                $log.debug("close RIGHT is done");
-            });
-    };
-});
-app.directive('footer', function () {
-    return {
-        restrict: 'A', //This menas that it will be used as an attribute and NOT as an element. I don't like creating custom HTML elements
-        replace: true,
-        templateUrl: "./js/directives/footer.html",
-        controller: ['$scope', '$filter', function ($scope, $filter) {
-            // Your behaviour goes here :)
-        }]
-    }
-});
 app.directive("clickToTag", function () {
     var mtDate = '<md-datepicker ng-model="view.editableValue">' + '</md-datepicker>';
     var mtText = '<input type="text" ng-list = " " ng-trim="false" class="small-12.columns" ng-model="view.editableValue">';
@@ -177,11 +175,6 @@ app.directive("clickToDate", function () {
                 scope.disableEditor();
             };
         }
-    };
-});
-app.controller('MyController', function($scope, $mdSidenav) {
-    $scope.openLeftMenu = function() {
-        $mdSidenav('left').toggle();
     };
 });
 
